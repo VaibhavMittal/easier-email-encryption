@@ -5,6 +5,6 @@
   * Outlook 2007
 
 Minimum Software Requirements: 
-  * Windows XP/Vista/7
+  * Operating System: Windows XP/Vista/7
   * Microsoft .Net Framework 4.0 or above
   
