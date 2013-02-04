@@ -1,8 +1,8 @@
 #summary Screenshot and Video tutorials on how to use the software.
 
-= Introduction =
+= Video Tutorials =
 
-Add your content here.
+Add-in installation, Sending and Receiving encrypted messages.
 
 
 = Details =
