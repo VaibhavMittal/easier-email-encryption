@@ -4,9 +4,9 @@
 
 = Video Tutorials =
 === <u>Outlook Add-in</u> ===
-  * [http://www.youtube.com Add-in installation, Sending and Receiving encrypted messages.] (Youtube Link)
+  * [http://www.youtube.com Add-in Installation, Sending and Receiving encrypted messages.]
 === <u>Standalone Application</u>===
-  * Reading encrypted messages through a standalone windows application. (Youtube Link)
+  * [http://www.youtube.com Reading encrypted messages through a standalone windows application.]
 
 ----
 
