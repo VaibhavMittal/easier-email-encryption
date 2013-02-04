@@ -21,11 +21,11 @@
 
 ----
 ==Installation==
-*
+*tutorial
 ==Sending and Receiving encrypted messages==
-*
+*tutorial
 ==Reading encrypted messages through a standalone windows application==
-*
+*tutorial
 
 
 = Details =
