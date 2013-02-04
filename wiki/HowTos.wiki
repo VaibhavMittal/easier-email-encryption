@@ -9,7 +9,7 @@
   * [http://www.youtube.com Reading encrypted messages through a standalone windows application.]
 
 ----
-<br>
+
 = Screenshot Tutorials =
 === <u>Outlook Add-in</u> ===
   * [HowTos#Installation Installation]
