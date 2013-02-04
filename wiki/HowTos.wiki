@@ -1,7 +1,7 @@
 #summary Screenshot and Video tutorials on how to use the software.
 = How To's and Videos =
 ----
-<br>
+----
 = Video Tutorials =
 === <u>Outlook Add-in</u> ===
   * [http://www.youtube.com Add-in Installation, Sending and Receiving encrypted messages.]
