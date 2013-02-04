@@ -2,15 +2,15 @@
 
 = ECube-v1.0=
 
-  *Password Based Encryption/Decryption
-  *Feature 2
-  *Feature 3
+  * Password Based Encryption/Decryption
+  * Feature 2
+  * Feature 3
 
 = ECube-v1.0 (Beta)=
 
-  *Password Based Encryption/Decryption
-  *Feature 2
-  *Feature 3
+  * Password Based Encryption/Decryption
+  * Feature 2
+  * Feature 3
 
 
 
