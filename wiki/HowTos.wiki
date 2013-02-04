@@ -19,6 +19,15 @@
 
   * [HowTos#Reading_encrypted_messages_through_a_standalone_windows_application Reading encrypted messages through a standalone windows application.]
 
+----
+==Installation==
+*
+==Sending and Receiving encrypted messages==
+*
+==Reading encrypted messages through a standalone windows application==
+*
+
+
 = Details =
 
 Add your content here.  Format your content with:
