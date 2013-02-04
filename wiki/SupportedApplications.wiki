@@ -1,0 +1,10 @@
+#summary Details of Supported Applications and Platforms
+
+= Microsoft Outlook =
+  * Outlook 2010
+  * Outlook 2007
+
+Minimum Software Requirements: 
+  * Windows XP/Vista/7
+  * Microsoft .Net Framework 4.0 or above
+  
