@@ -1,20 +1,23 @@
 #summary Screenshot and Video tutorials on how to use the software.
 = How To's and Videos =
+----
 
-== Video Tutorials ==
-=== Outlook Add-in ===
-* Add-in installation, Sending and Receiving encrypted messages. (Youtube Link)
-=== Standalone Application===
-* Reading encrypted messages through a standalone windows application.
+= Video Tutorials =
+=== <u>Outlook Add-in</u> ===
+  * [http://www.youtube.com Add-in installation, Sending and Receiving encrypted messages.] (Youtube Link)
+=== <u>Standalone Application</u>===
+  * Reading encrypted messages through a standalone windows application. (Youtube Link)
+
+----
 
 = Screenshot Tutorials =
-=== Outlook Add-in ===
-* Installation
-* Sending and Receiving encrypted messages
+=== <u>Outlook Add-in</u> ===
+  * Installation
+  * Sending and Receiving encrypted messages
 
-=== Standalone Application===
+=== <u>Standalone Application</u>===
 
-* Reading encrypted messages through a standalone windows application.
+  * Reading encrypted messages through a standalone windows application.
 
 = Details =
 
