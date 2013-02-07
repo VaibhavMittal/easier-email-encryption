@@ -1,23 +1,35 @@
 #summary Details of the Technologies and Standards used.
 
+=Introduction=
+
+<Explain the basic philosophy and working of the software>
+
+
 =Encryption Process=
 ==Quick Security==
 
  Is based on PBE
+<include diagrams and flowcharts>
+give links to:
+
+ * <Password-based Encryption for CMS (RFC3211)>
+
+ * <S/MIME Version 3.2 (RFC5751)>
 
 ==High Security==
  
  Is a new proposal.
-
-= Password-based Encryption for CMS (RFC3211) =
-
-= S/MIME Version 3.2 (RFC5751)=
+<leave it as it is with some description>
 
 =Encryption Techniques=
 
 ==AES==
 
+<links and a little explanation>
+
 ==Triple DES (3-DES)==
 
+<links and a little explanation>
 
+==Usability Study==
 <Some content here.>
