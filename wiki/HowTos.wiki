@@ -13,6 +13,7 @@
 = Screenshot Tutorials =
 === <u>Outlook Add-in</u> ===
   * [HowTos#Installation Installation]
+  * [HowTos#Un-Installation Un-Installation]
   * [HowTos#Sending_and_Receiving_encrypted_messages Sending and Receiving encrypted messages]
 
 <font color="White">=== <u>Standalone Application</u>=== 
