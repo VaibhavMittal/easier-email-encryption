@@ -23,6 +23,10 @@
 ----
 ==Installation==
 #tutorial
+
+==Un-Installation==
+#tutorial
+
 ==Sending and Receiving encrypted messages==
 #tutorial
 <font color="White">==Reading encrypted messages through a standalone windows application==
