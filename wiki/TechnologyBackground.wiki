@@ -1,5 +1,14 @@
 #summary Details of the Technologies and Standards used.
 
+=Encryption Process=
+==Quick Security==
+
+ Is based on PBE
+
+==High Security==
+ 
+ Is a new proposal.
+
 = Password-based Encryption for CMS (RFC3211) =
 
 = S/MIME Version 3.2 (RFC5751)=
@@ -11,12 +20,4 @@
 ==Triple DES (3-DES)==
 
 
-Add your content here.
-
-
-= Details =
-
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+<Some content here.>
