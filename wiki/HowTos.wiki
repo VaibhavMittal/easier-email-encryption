@@ -5,9 +5,9 @@
 = Video Tutorials =
 === <u>Outlook Add-in</u> ===
   * [http://www.youtube.com Add-in Installation, Sending and Receiving encrypted messages.]
-=== <u>Standalone Application</u>===
+<font color="White">=== <u>Standalone Application</u>===
   * [http://www.youtube.com Reading encrypted messages through a standalone windows application.]
-
+</font>
 ----
 
 = Screenshot Tutorials =
@@ -15,22 +15,15 @@
   * [HowTos#Installation Installation]
   * [HowTos#Sending_and_Receiving_encrypted_messages Sending and Receiving encrypted messages]
 
-=== <u>Standalone Application</u>===
+<font color="White">=== <u>Standalone Application</u>=== 
 
-  * [HowTos#Reading_encrypted_messages_through_a_standalone_windows_application Reading encrypted messages through a standalone windows application.]
+  * [HowTos#Reading_encrypted_messages_through_a_standalone_windows_application Reading encrypted messages through a standalone windows application.]   
+   </font>
 
 ----
 ==Installation==
 #tutorial
 ==Sending and Receiving encrypted messages==
 #tutorial
-==Reading encrypted messages through a standalone windows application==
-#tutorial
-
-
-= Details =
-
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+<font color="White">==Reading encrypted messages through a standalone windows application==
+#tutorial</font>
