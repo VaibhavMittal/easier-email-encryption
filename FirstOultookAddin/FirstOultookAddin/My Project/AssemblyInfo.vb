@@ -46,4 +46,4 @@ Friend Module DesignTimeConstants
     Public Const RibbonDesigner As String = "Microsoft.VisualStudio.Tools.Office.Ribbon.Design.RibbonDesigner, Microsoft.VisualStudio.Tools.Office.Designer, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
 End Module
 
-<assembly: NeutralResourcesLanguageAttribute("en")>
+'<assembly: NeutralResourcesLanguageAttribute("en")>
