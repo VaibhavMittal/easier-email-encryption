@@ -218,11 +218,17 @@ Public Class EncryptionPasswordDialogBox
             ButtonPanelInitial.Enabled = False
             TopPanel.Enabled = False
 
+            UserChoicePanel.Visible = True
             UserChoicePanel.Enabled = True
 
+            'Resize the Box height to fit everything
+            Dim temp As Integer = Me.Size.Height
+            If (UserChoicePanel.Location.Y + UserChoicePanel.Height) > temp Then
+
+                Me.Height = UserChoicePanel.Location.Y + UserChoicePanel.Height
+            End If
+
             UserChoicePanel.Show()
-            UserChoicePanel.Location = New System.Drawing.Point(206, 247)
-            'UserChoicePanel.BackColor = Drawing.SystemColors.ButtonHighlight
             UserChoicePanel.Focus()
 
             Me.CancelButton = doneButton
@@ -685,10 +691,95 @@ Public Class EncryptionPasswordDialogBox
 
     Private Sub EncryptionPasswordDialogBox_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
-        Me.Size = New System.Drawing.Size(900, 412)
+        Me.Icon = My.Resources.ecubeicon
+
+        'Sizing
+        Dim screenWidth As Integer = My.Computer.Screen.Bounds.Width
+        Dim screenHeight As Integer = My.Computer.Screen.Bounds.Height
+
+        Me.Size = New System.Drawing.Size((screenWidth * 0.48), (screenHeight * 0.38))
         Me.CenterToScreen()
 
+        LogoPictureBox.Size = New Drawing.Size((Me.Size.Width * 0.22), (Me.Size.Height * 0.92))
+        TopPanel.Size = New Drawing.Size((Me.Size.Width * 0.6), (Me.Size.Height * 0.38))
+        EncryptionProgressBar.Size = New Drawing.Size(Me.Size.Width * 0.48, Me.Size.Height * 0.072)
+        ButtonPanelInitial.Size = New Drawing.Size((Me.Size.Width - LogoPictureBox.Width), (Me.Size.Height * 0.31))
+        UserChoicePanel.Size = New Drawing.Size((Me.Size.Width - LogoPictureBox.Width), (Me.Size.Height * 0.31))
 
+        'Label Resizing
+        Dim fontScaleFactor As Double = screenHeight / 1080
+
+        IntroLabel.Font = New Drawing.Font(IntroLabel.Font.FontFamily, IntroLabel.Font.Size * (fontScaleFactor + 0.1))
+        PasswordLabel.Font = New Drawing.Font(PasswordLabel.Font.FontFamily, PasswordLabel.Font.Size * fontScaleFactor)
+        ConfirmPasswordLabel.Font = New Drawing.Font(ConfirmPasswordLabel.Font.FontFamily, ConfirmPasswordLabel.Font.Size * fontScaleFactor)
+        HintLabel.Font = New Drawing.Font(HintLabel.Font.FontFamily, HintLabel.Font.Size * fontScaleFactor)
+        EncryptionProgressLabel.Font = New Drawing.Font(EncryptionProgressLabel.Font.FontFamily, EncryptionProgressLabel.Font.Size * fontScaleFactor)
+        EncryptionProgressLabel.Font = New Drawing.Font(EncryptionProgressLabel.Font.FontFamily, EncryptionProgressLabel.Font.Size, Drawing.FontStyle.Bold)
+
+        NoteLabel.Font = New Drawing.Font(NoteLabel.Font.FontFamily, NoteLabel.Font.Size * fontScaleFactor)
+        NoteLabel.Width = NoteLabel.Parent.Width * 0.55
+        encryptionStatusLabel.Font = New Drawing.Font(encryptionStatusLabel.Font.FontFamily, encryptionStatusLabel.Font.Size * (fontScaleFactor + 0.1))
+        
+        PasswordTextBox.Size = New Drawing.Size(PasswordTextBox.Parent.Width * 0.36, PasswordTextBox.Parent.Height * 0.141)
+        PasswordTextBox.Font = New Drawing.Font(PasswordTextBox.Font.FontFamily, PasswordTextBox.Font.Size * (fontScaleFactor + 0.1))
+        ConfirmPasswordTextBox.Size = New Drawing.Size(ConfirmPasswordTextBox.Parent.Width * 0.36, ConfirmPasswordTextBox.Parent.Height * 0.141)
+        ConfirmPasswordTextBox.Font = New Drawing.Font(ConfirmPasswordTextBox.Font.FontFamily, ConfirmPasswordTextBox.Font.Size * (fontScaleFactor + 0.1))
+        HintTextBox.Size = New Drawing.Size(HintTextBox.Parent.Width * 0.52, HintTextBox.Parent.Height * 0.141)
+        HintTextBox.Font = New Drawing.Font(HintTextBox.Font.FontFamily, HintTextBox.Font.Size * (fontScaleFactor + 0.1))
+
+        Cancel.Size = New System.Drawing.Size((Cancel.Parent.Width * 0.13), (Cancel.Parent.Height * 0.46))
+        Cancel.Font = New Drawing.Font(Cancel.Font.FontFamily, Cancel.Font.Size * fontScaleFactor)
+        SendEncryptedMessageButton.Size = New System.Drawing.Size((SendEncryptedMessageButton.Parent.Width * 0.2), _
+                                                                  (SendEncryptedMessageButton.Parent.Height * 0.46))
+        SendEncryptedMessageButton.Font = New Drawing.Font(SendEncryptedMessageButton.Font.FontFamily, SendEncryptedMessageButton.Font.Size * fontScaleFactor)
+
+        userChoiceGroupBox.Size = New System.Drawing.Size((userChoiceGroupBox.Parent.Width * 0.53), _
+                                                          (userChoiceGroupBox.Parent.Height * 0.78))
+        doneButton.Size = New System.Drawing.Size((doneButton.Parent.Width * 0.2), (doneButton.Parent.Height * 0.46))
+
+
+        'Position
+        Dim V_Spacing As Integer = Me.Size.Height * 0.025 '(Almost 5)
+        Dim H_Spacing As Integer = Me.Size.Width * 0.023 '(Almost 2 X V_Spacing i.e 10)
+
+        TopPanel.Location = New Drawing.Point(LogoPictureBox.Width + H_Spacing, V_Spacing)
+        IntroLabel.Location = New Drawing.Point(H_Spacing / 2, V_Spacing)
+        PasswordLabel.Location = New Drawing.Point(H_Spacing / 2, _
+                                                   IntroLabel.Location.Y + IntroLabel.Height + 2 * V_Spacing)
+        ConfirmPasswordLabel.Location = New Drawing.Point(H_Spacing / 2, _
+                                                          PasswordLabel.Location.Y + PasswordLabel.Height + V_Spacing)
+        HintLabel.Location = New Drawing.Point(H_Spacing / 2, _
+                                               ConfirmPasswordLabel.Location.Y + ConfirmPasswordLabel.Height + V_Spacing)
+
+        PasswordTextBox.Location = New Drawing.Point(PasswordLabel.Width + H_Spacing, PasswordLabel.Location.Y)
+        ConfirmPasswordTextBox.Location = New Drawing.Point(PasswordTextBox.Location.X, ConfirmPasswordLabel.Location.Y)
+        HintTextBox.Location = New Drawing.Point(ConfirmPasswordTextBox.Location.X, HintLabel.Location.Y)
+
+        EncryptionProgressLabel.Location = New Drawing.Point(((Me.Size.Width - LogoPictureBox.Width - EncryptionProgressLabel.Width) / 2) + LogoPictureBox.Width, _
+                                                             TopPanel.Location.Y + TopPanel.Size.Height + V_Spacing)
+        EncryptionProgressBar.Location = New Drawing.Point(((Me.Size.Width - LogoPictureBox.Width - EncryptionProgressBar.Width) / 2) + LogoPictureBox.Width, _
+                                                           EncryptionProgressLabel.Location.Y + EncryptionProgressLabel.Height)
+        encryptionStatusLabel.Location = New Drawing.Point(EncryptionProgressLabel.Location.X, _
+                                                           EncryptionProgressBar.Location.Y + EncryptionProgressBar.Height)
+
+        ButtonPanelInitial.Location = New Drawing.Point(LogoPictureBox.Width, _
+                                                     encryptionStatusLabel.Location.Y + encryptionStatusLabel.Height)
+        NoteLabel.Location = New Drawing.Point(H_Spacing, (ButtonPanelInitial.Height - NoteLabel.Height) / 2)
+        Cancel.Location = New Drawing.Point(ButtonPanelInitial.Width - (2 * H_Spacing) - Cancel.Width - SendEncryptedMessageButton.Width, (ButtonPanelInitial.Height - Cancel.Height) / 2)
+        SendEncryptedMessageButton.Location = New Drawing.Point(ButtonPanelInitial.Width - H_Spacing - SendEncryptedMessageButton.Width, (ButtonPanelInitial.Height - SendEncryptedMessageButton.Height) / 2)
+
+        UserChoicePanel.Location = New Drawing.Point(LogoPictureBox.Width, _
+                                                     encryptionStatusLabel.Location.Y + encryptionStatusLabel.Height)
+        userChoiceIntroLabel.Location = New Drawing.Point(H_Spacing, V_Spacing)
+        userChoiceGroupBox.Location = New Drawing.Point(2 * H_Spacing, _
+                                            userChoiceIntroLabel.Location.Y + userChoiceIntroLabel.Height)
+        doneButton.Location = New Drawing.Point(UserChoicePanel.Width - H_Spacing - doneButton.Width, (UserChoicePanel.Height - doneButton.Height) / 2)
+
+        If currentItem.Subject Is Nothing Or currentItem.To Is Nothing Then
+            Me.Text = """" & "[Empty Message]" & """" & " | Quick Security"
+        Else
+            Me.Text = """" & currentItem.Subject.ToString & """" & " sent by " & currentItem.To.ToString & " | Quick Security" 'Set DialogBox Title to Message Subject
+        End If
         saveEncryptedRB.Checked = True
         PasswordTextBox.Focus()
 

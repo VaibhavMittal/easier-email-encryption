@@ -84,14 +84,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="FirstOultookAddin.dll" size="499200">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="FirstOultookAddin.dll" size="588288">
       <assemblyIdentity name="FirstOultookAddin" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>xM/hP+K0k+pHeRlNuWAIIBU8nd8=</dsig:DigestValue>
+        <dsig:DigestValue>G2icoWWIqpeWvNBVgq3sCHm8V1A=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -119,6 +119,24 @@
       </hash>
     </dependentAssembly>
   </dependency>
+  <file name="FirstOultookAddin.dll.config" size="2386">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>d54fYrDalFSC/H2AU8ErFnWgw6k=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\ecubeicon.ico" size="82982">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>M3Xc+Nc/h9lVDic5qEYHTwV0dfA=</dsig:DigestValue>
+    </hash>
+  </file>
   <file name="SetupMyOutlookAddIn\SetupMyOutlookAddIn.sln" size="915">
     <hash>
       <dsig:Transforms>
@@ -150,4 +168,4 @@
       </vstov4:customizations>
     </vstav3:application>
   </vstav3:addIn>
-<publisherIdentity name="CN=Vaibhav-PC\Vaibhav" issuerKeyHash="a960aa2bbe8072112dfe9580d2142b8040bd2939" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" /><DigestValue>NMTxAaJ+5U1T6x20piXd0wnavCw=</DigestValue></Reference></SignedInfo><SignatureValue>SY8sPwaS6kWQImEtGQJnalrTZk5oYmigOJRCI23My4T9nALk/NCB70YVEIJOOz/KWfSvGLsHrJd+be+whKRHZK6kWOcAtze/6zZ3JPz/bl+CR+b44idj6RL2IDlZuz+JcLAoYBRE0BqSXw8cNZoz0u0r8Ghbt24hNsIpBraaCBc=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>sgodPdrs79UXTMRHvNtvQE49TOyByK/TTenZkHwmBx5wWZGyhvJwIG86M3Mf4ASEcgMF8+2W6JIyjMxDRvkVjegRBhOrLNdQYKyD4t4yZ4QD6hIMopC+acQzqdQ+4KxQ4ZqCrQXhEEHJ3HGGE0NUEVGnRELEWmN3M+EL5Nm4N/M=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="2cbcda09d3dd25a6b41deb534de57ea201f1c434" Description="" Url=""><as:assemblyIdentity name="FirstOultookAddin.dll" version="1.0.0.0" publicKeyToken="70d380e956b5a7b3" language="neutral" processorArchitecture="msil" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=Vaibhav-PC\Vaibhav</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" /><DigestValue>X298PNludQ7d0sU5X6rD8ZmTBaQ=</DigestValue></Reference></SignedInfo><SignatureValue>iAbbLi6B/RUo1h0fxwy04s9gyx249UscQ+44jbPAR3e5cQP2lnUITuGbYCsNQ8gRtaVMlaj2UgcXtzfiJwMeGUbR9IPXnzc1p0Cm8ZWALFiQM5i/wXCM2kuozVGRR3jX44iNmraW6YKKKu7hAkKz0bgX0rQ80fI8ps4sq6g+0QQ=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>sgodPdrs79UXTMRHvNtvQE49TOyByK/TTenZkHwmBx5wWZGyhvJwIG86M3Mf4ASEcgMF8+2W6JIyjMxDRvkVjegRBhOrLNdQYKyD4t4yZ4QD6hIMopC+acQzqdQ+4KxQ4ZqCrQXhEEHJ3HGGE0NUEVGnRELEWmN3M+EL5Nm4N/M=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIB4TCCAUqgAwIBAgIQH1i6Nk0ziYpHf+OUE7bMdzANBgkqhkiG9w0BAQUFADAvMS0wKwYDVQQDHiQAVgBhAGkAYgBoAGEAdgAtAFAAQwBcAFYAYQBpAGIAaABhAHYwHhcNMTIxMjAyMTIwNTIwWhcNMTMxMjAyMTgwNTIwWjAvMS0wKwYDVQQDHiQAVgBhAGkAYgBoAGEAdgAtAFAAQwBcAFYAYQBpAGIAaABhAHYwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBALIKHT3a7O/VF0zER7zbb0BOPUzsgciv003p2ZB8JgcecFmRsobycCBvOjNzH+AEhHIDBfPtluiSMozMQ0b5FY3oEQYTqyzXUGCsg+LeMmeEA+oSDKKQvmnEM6nUPuCsUOGagq0F4RBBydxxhhNDVBFRp0RCxFpjdzPhC+TZuDfzAgMBAAEwDQYJKoZIhvcNAQEFBQADgYEAICM+oeNuG7Z6hMwq6Aae6Hkhgqbt3cNVaMQ1O0R1LXpJr+1r7WA6tdxvtu7CBIC0eWZVWBMBX4aQhCwaUmNBRvfRExYHYSjb6c8S3trMfETQ1jguwkdJ/aRWtbr0RLN6yVxZ3tvFTQbETB2+YPyxPpjhLBNQwBAv6RxwNkb/r8k=</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>
+<publisherIdentity name="CN=Vaibhav-PC\Vaibhav" issuerKeyHash="a960aa2bbe8072112dfe9580d2142b8040bd2939" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" /><DigestValue>oi3iuF3SSpePMg64SAibKqMJy/8=</DigestValue></Reference></SignedInfo><SignatureValue>YvCJ6a+XC+6wBXmcc81vJvvkzQq/MrVIfCtPgFOPSmdJuzUPPJ2IUXXQtPnChrbKLq9qcwEHnBJs2k8mLqIz0hKdnrscLiTHe+Ndx04RIqBJp+gyUxIzArW26wVlnPIpbPAiaPpmoyWAMM+ydKFnt1T9HvCl2b1NXTuejx/MGBs=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>sgodPdrs79UXTMRHvNtvQE49TOyByK/TTenZkHwmBx5wWZGyhvJwIG86M3Mf4ASEcgMF8+2W6JIyjMxDRvkVjegRBhOrLNdQYKyD4t4yZ4QD6hIMopC+acQzqdQ+4KxQ4ZqCrQXhEEHJ3HGGE0NUEVGnRELEWmN3M+EL5Nm4N/M=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="ffcb09a32a9b0848b80e328f974ad25db8e22da2" Description="" Url=""><as:assemblyIdentity name="FirstOultookAddin.dll" version="1.0.0.0" publicKeyToken="70d380e956b5a7b3" language="neutral" processorArchitecture="msil" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=Vaibhav-PC\Vaibhav</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" /><DigestValue>GEZj5yWN2e8llxgvgU1ii4PONWo=</DigestValue></Reference></SignedInfo><SignatureValue>fMwS22B7eDrbgoJ6o5cD1d4aYv5Pc/qSBezUKpf81DvFIUkzSqQMMYPjKWvzEGV+pLyPqa/Jmp/oNzGT8Qca8cC3vLNy9dpD0k/ofaP4BdqHURU8egtFTu61F1ZcURVrJYDZ6cXVQBURLWzqZXyTUQJwB1qOdGvPQ+JdhTQYrBI=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>sgodPdrs79UXTMRHvNtvQE49TOyByK/TTenZkHwmBx5wWZGyhvJwIG86M3Mf4ASEcgMF8+2W6JIyjMxDRvkVjegRBhOrLNdQYKyD4t4yZ4QD6hIMopC+acQzqdQ+4KxQ4ZqCrQXhEEHJ3HGGE0NUEVGnRELEWmN3M+EL5Nm4N/M=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIB4TCCAUqgAwIBAgIQH1i6Nk0ziYpHf+OUE7bMdzANBgkqhkiG9w0BAQUFADAvMS0wKwYDVQQDHiQAVgBhAGkAYgBoAGEAdgAtAFAAQwBcAFYAYQBpAGIAaABhAHYwHhcNMTIxMjAyMTIwNTIwWhcNMTMxMjAyMTgwNTIwWjAvMS0wKwYDVQQDHiQAVgBhAGkAYgBoAGEAdgAtAFAAQwBcAFYAYQBpAGIAaABhAHYwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBALIKHT3a7O/VF0zER7zbb0BOPUzsgciv003p2ZB8JgcecFmRsobycCBvOjNzH+AEhHIDBfPtluiSMozMQ0b5FY3oEQYTqyzXUGCsg+LeMmeEA+oSDKKQvmnEM6nUPuCsUOGagq0F4RBBydxxhhNDVBFRp0RCxFpjdzPhC+TZuDfzAgMBAAEwDQYJKoZIhvcNAQEFBQADgYEAICM+oeNuG7Z6hMwq6Aae6Hkhgqbt3cNVaMQ1O0R1LXpJr+1r7WA6tdxvtu7CBIC0eWZVWBMBX4aQhCwaUmNBRvfRExYHYSjb6c8S3trMfETQ1jguwkdJ/aRWtbr0RLN6yVxZ3tvFTQbETB2+YPyxPpjhLBNQwBAv6RxwNkb/r8k=</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>

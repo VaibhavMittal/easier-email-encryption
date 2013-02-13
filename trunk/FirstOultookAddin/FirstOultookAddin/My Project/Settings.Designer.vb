@@ -67,7 +67,7 @@ Partial Public NotInheritable Class MySettings
     
     <Global.System.Configuration.UserScopedSettingAttribute(),  _
      Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-     Global.System.Configuration.DefaultSettingValueAttribute("SaveEncryptedMessage"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SaveDecrptedMessage"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"DeleteMessagePermanently")>  _
+     Global.System.Configuration.DefaultSettingValueAttribute("")>  _
     Public Property UserChoiceOptionsSetting() As String
         Get
             Return CType(Me("UserChoiceOptionsSetting"),String)

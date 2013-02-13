@@ -60,6 +60,13 @@ Namespace My.Resources
             End Set
         End Property
         
+        Friend ReadOnly Property ecubeicon() As System.Drawing.Icon
+            Get
+                Dim obj As Object = ResourceManager.GetObject("ecubeicon", resourceCulture)
+                Return CType(obj,System.Drawing.Icon)
+            End Get
+        End Property
+        
         Friend ReadOnly Property secure_email() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("secure_email", resourceCulture)
