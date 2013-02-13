@@ -24,7 +24,7 @@
     <ProjectGuid>{A2AFF7BE-6DF1-4211-8BA5-5233A59CD590}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>FirstOultookAddin</RootNamespace>
-    <AssemblyName>EasierEmailEncryption</AssemblyName>
+    <AssemblyName>FirstOultookAddin</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <DefineConstants>VSTO40</DefineConstants>
@@ -108,7 +108,7 @@
     <DebugSymbols>true</DebugSymbols>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>EasierEmailEncryption.xml</DocumentationFile>
+    <DocumentationFile>FirstOultookAddin.xml</DocumentationFile>
     <RegisterForComInterop>false</RegisterForComInterop>
     <RemoveIntegerChecks>false</RemoveIntegerChecks>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
@@ -137,7 +137,7 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>EasierEmailEncryption.xml</DocumentationFile>
+    <DocumentationFile>FirstOultookAddin.xml</DocumentationFile>
     <RegisterForComInterop>false</RegisterForComInterop>
     <RemoveIntegerChecks>false</RemoveIntegerChecks>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
@@ -323,6 +323,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\secure_email.jpg" />
+    <Content Include="Resources\ecubeicon.ico" />
     <Content Include="SetupMyOutlookAddIn\SetupMyOutlookAddIn.sln" />
   </ItemGroup>
   <!-- Include the build rules for a Visual Basic project. -->

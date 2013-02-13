@@ -66,27 +66,32 @@ Partial Class EncryptionPasswordDialogBox
         '
         'PasswordLabel
         '
+        Me.PasswordLabel.AutoSize = True
         Me.PasswordLabel.ForeColor = System.Drawing.SystemColors.HotTrack
-        Me.PasswordLabel.Location = New System.Drawing.Point(4, 36)
+        Me.PasswordLabel.Location = New System.Drawing.Point(4, 35)
+        Me.PasswordLabel.Margin = New System.Windows.Forms.Padding(5)
         Me.PasswordLabel.Name = "PasswordLabel"
-        Me.PasswordLabel.Size = New System.Drawing.Size(124, 23)
+        Me.PasswordLabel.Size = New System.Drawing.Size(123, 17)
         Me.PasswordLabel.TabIndex = 0
         Me.PasswordLabel.Text = "Enter a &Password:"
         Me.PasswordLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'ConfirmPasswordLabel
         '
+        Me.ConfirmPasswordLabel.AutoSize = True
         Me.ConfirmPasswordLabel.ForeColor = System.Drawing.SystemColors.HotTrack
         Me.ConfirmPasswordLabel.Location = New System.Drawing.Point(3, 71)
+        Me.ConfirmPasswordLabel.Margin = New System.Windows.Forms.Padding(5)
         Me.ConfirmPasswordLabel.Name = "ConfirmPasswordLabel"
-        Me.ConfirmPasswordLabel.Size = New System.Drawing.Size(125, 23)
+        Me.ConfirmPasswordLabel.Size = New System.Drawing.Size(125, 17)
         Me.ConfirmPasswordLabel.TabIndex = 2
-        Me.ConfirmPasswordLabel.Text = "&Confirm Password"
+        Me.ConfirmPasswordLabel.Text = "&Confirm Password:"
         Me.ConfirmPasswordLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'PasswordTextBox
         '
         Me.PasswordTextBox.Location = New System.Drawing.Point(148, 36)
+        Me.PasswordTextBox.Margin = New System.Windows.Forms.Padding(10, 3, 3, 3)
         Me.PasswordTextBox.Name = "PasswordTextBox"
         Me.PasswordTextBox.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.PasswordTextBox.Size = New System.Drawing.Size(197, 22)
@@ -95,6 +100,7 @@ Partial Class EncryptionPasswordDialogBox
         'ConfirmPasswordTextBox
         '
         Me.ConfirmPasswordTextBox.Location = New System.Drawing.Point(148, 77)
+        Me.ConfirmPasswordTextBox.Margin = New System.Windows.Forms.Padding(10, 3, 3, 3)
         Me.ConfirmPasswordTextBox.Name = "ConfirmPasswordTextBox"
         Me.ConfirmPasswordTextBox.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.ConfirmPasswordTextBox.Size = New System.Drawing.Size(197, 22)
@@ -102,7 +108,7 @@ Partial Class EncryptionPasswordDialogBox
         '
         'SendEncryptedMessageButton
         '
-        Me.SendEncryptedMessageButton.Location = New System.Drawing.Point(537, 47)
+        Me.SendEncryptedMessageButton.Location = New System.Drawing.Point(537, 52)
         Me.SendEncryptedMessageButton.Name = "SendEncryptedMessageButton"
         Me.SendEncryptedMessageButton.Size = New System.Drawing.Size(139, 59)
         Me.SendEncryptedMessageButton.TabIndex = 4
@@ -121,26 +127,28 @@ Partial Class EncryptionPasswordDialogBox
         '
         Me.HintLabel.AutoSize = True
         Me.HintLabel.ForeColor = System.Drawing.SystemColors.HotTrack
-        Me.HintLabel.Location = New System.Drawing.Point(3, 112)
+        Me.HintLabel.Location = New System.Drawing.Point(4, 118)
+        Me.HintLabel.Margin = New System.Windows.Forms.Padding(5)
         Me.HintLabel.Name = "HintLabel"
-        Me.HintLabel.Size = New System.Drawing.Size(118, 34)
+        Me.HintLabel.Size = New System.Drawing.Size(106, 17)
         Me.HintLabel.TabIndex = 6
-        Me.HintLabel.Text = "Give a Password " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "&Hint (Optional):"
+        Me.HintLabel.Text = "Password &Hint: "
         Me.HintLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'HintTextBox
         '
         Me.HintTextBox.Location = New System.Drawing.Point(148, 118)
+        Me.HintTextBox.Margin = New System.Windows.Forms.Padding(10, 3, 3, 3)
         Me.HintTextBox.Name = "HintTextBox"
         Me.HintTextBox.Size = New System.Drawing.Size(282, 22)
         Me.HintTextBox.TabIndex = 3
         '
         'NoteLabel
         '
-        Me.NoteLabel.AutoSize = True
         Me.NoteLabel.Font = New System.Drawing.Font("Arial Rounded MT Bold", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.NoteLabel.ForeColor = System.Drawing.Color.SaddleBrown
         Me.NoteLabel.Location = New System.Drawing.Point(11, 47)
+        Me.NoteLabel.Margin = New System.Windows.Forms.Padding(3)
         Me.NoteLabel.Name = "NoteLabel"
         Me.NoteLabel.Size = New System.Drawing.Size(396, 48)
         Me.NoteLabel.TabIndex = 8
@@ -150,8 +158,10 @@ Partial Class EncryptionPasswordDialogBox
         'IntroLabel
         '
         Me.IntroLabel.AutoSize = True
+        Me.IntroLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.IntroLabel.ForeColor = System.Drawing.Color.ForestGreen
-        Me.IntroLabel.Location = New System.Drawing.Point(3, 3)
+        Me.IntroLabel.Location = New System.Drawing.Point(8, 8)
+        Me.IntroLabel.Margin = New System.Windows.Forms.Padding(5)
         Me.IntroLabel.Name = "IntroLabel"
         Me.IntroLabel.Size = New System.Drawing.Size(329, 17)
         Me.IntroLabel.TabIndex = 9
@@ -170,6 +180,7 @@ Partial Class EncryptionPasswordDialogBox
         Me.EncryptionProgressLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.EncryptionProgressLabel.ForeColor = System.Drawing.Color.DarkViolet
         Me.EncryptionProgressLabel.Location = New System.Drawing.Point(472, 171)
+        Me.EncryptionProgressLabel.Margin = New System.Windows.Forms.Padding(3)
         Me.EncryptionProgressLabel.Name = "EncryptionProgressLabel"
         Me.EncryptionProgressLabel.Size = New System.Drawing.Size(155, 17)
         Me.EncryptionProgressLabel.TabIndex = 11
@@ -222,10 +233,11 @@ Partial Class EncryptionPasswordDialogBox
         Me.UserChoicePanel.Controls.Add(Me.userChoiceGroupBox)
         Me.UserChoicePanel.Controls.Add(Me.userChoiceIntroLabel)
         Me.UserChoicePanel.Enabled = False
-        Me.UserChoicePanel.Location = New System.Drawing.Point(199, 409)
+        Me.UserChoicePanel.Location = New System.Drawing.Point(206, 409)
         Me.UserChoicePanel.Name = "UserChoicePanel"
-        Me.UserChoicePanel.Size = New System.Drawing.Size(695, 130)
+        Me.UserChoicePanel.Size = New System.Drawing.Size(688, 130)
         Me.UserChoicePanel.TabIndex = 15
+        Me.UserChoicePanel.Visible = False
         '
         'doneButton
         '
@@ -290,6 +302,7 @@ Partial Class EncryptionPasswordDialogBox
         Me.userChoiceIntroLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!)
         Me.userChoiceIntroLabel.ForeColor = System.Drawing.Color.ForestGreen
         Me.userChoiceIntroLabel.Location = New System.Drawing.Point(11, 11)
+        Me.userChoiceIntroLabel.Margin = New System.Windows.Forms.Padding(3)
         Me.userChoiceIntroLabel.Name = "userChoiceIntroLabel"
         Me.userChoiceIntroLabel.Size = New System.Drawing.Size(325, 17)
         Me.userChoiceIntroLabel.TabIndex = 2
@@ -306,6 +319,7 @@ Partial Class EncryptionPasswordDialogBox
         Me.TopPanel.Controls.Add(Me.HintTextBox)
         Me.TopPanel.Location = New System.Drawing.Point(216, 12)
         Me.TopPanel.Name = "TopPanel"
+        Me.TopPanel.Padding = New System.Windows.Forms.Padding(5)
         Me.TopPanel.Size = New System.Drawing.Size(544, 156)
         Me.TopPanel.TabIndex = 16
         '
@@ -319,8 +333,8 @@ Partial Class EncryptionPasswordDialogBox
         'EncryptionPasswordDialogBox
         '
         Me.AcceptButton = Me.SendEncryptedMessageButton
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(120.0!, 120.0!)
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.BackColor = System.Drawing.SystemColors.Control
         Me.CancelButton = Me.Cancel
         Me.ClientSize = New System.Drawing.Size(894, 565)
@@ -341,7 +355,6 @@ Partial Class EncryptionPasswordDialogBox
         Me.Text = "Password Based Encryption"
         CType(Me.LogoPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ButtonPanelInitial.ResumeLayout(False)
-        Me.ButtonPanelInitial.PerformLayout()
         Me.UserChoicePanel.ResumeLayout(False)
         Me.UserChoicePanel.PerformLayout()
         Me.userChoiceGroupBox.ResumeLayout(False)

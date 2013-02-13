@@ -11,7 +11,7 @@ Imports System.Security
 
 ' Review the values of the assembly attributes
 
-<Assembly: AssemblyTitle("EasierEmailEncryption")> 
+<Assembly: AssemblyTitle("FirstOultookAddin")> 
 <Assembly: AssemblyDescription("An easier way to Encrypt Emails")> 
 <Assembly: AssemblyCompany("QUT ISI")> 
 <Assembly: AssemblyProduct("Easier Email Encryption (ECube)")> 

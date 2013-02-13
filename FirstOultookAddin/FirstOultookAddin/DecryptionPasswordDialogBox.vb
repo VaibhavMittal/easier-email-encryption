@@ -284,6 +284,8 @@ Public Class DecryptionPasswordDialogBox
         'Dim currentItem As Outlook.MailItem
         'currentItem = CType(Globals.ThisAddIn.Application.ActiveExplorer.Selection(1), Outlook.MailItem)
 
+        Me.Icon = My.Resources.ecubeicon
+
         DecryptionRibbon.currentDecryptionRibbon.decryptEmailMessage.Enabled = False
 
 
@@ -292,7 +294,7 @@ Public Class DecryptionPasswordDialogBox
 
         Dim hint As String = CType(pa.GetProperty("http://schemas.microsoft.com/mapi/string/{00020386-0000-0000-C000-000000000046}/X-PBE-Hint"), String)
         HintLabel.Text = "Hint: " & hint                    'Set Hint value on DecryptionDialogBox as in the message header
-        Me.Text = currentItem.Subject.ToString & " sent by " & currentItem.SenderEmailAddress.ToString 'Set DialogBox Title to Message Subject
+        Me.Text = """" & currentItem.Subject.ToString & """" & " sent by " & currentItem.SenderEmailAddress.ToString & " | Quick Security" 'Set DialogBox Title to Message Subject
 
         Me.Focus()
         PasswordTextBox.Focus()
