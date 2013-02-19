@@ -1,5 +1,5 @@
 #summary Explanation about the code organisation and the logical workflow.
-#labels CodeArchitiecture,LogicalWorkflow,LibrariesandClasses,DevelopersGuide,Phase-Implementation,Featured
+#labels CodeArchitecture,LogicalWorkflow,LibrariesandClasses,DevelopersGuide,Phase-Implementation,Featured
 
 =Software Architecture=
 This document might be useful for anyone willing to do some further development on the project or some part of it. It tells how the software code is organized and the logical workflow of the software.
