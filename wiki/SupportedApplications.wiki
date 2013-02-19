@@ -12,4 +12,5 @@ Minimum Software Requirements:
 
 NOTE: All the prerequisites except Outlook software will be downloaded and installed automatically by the add-in setup.
   
+
 *ECube-v1.0 add-in successfully tested on Outlook 2007, 2010 with Windows 7 & 8.*
