@@ -6,12 +6,12 @@ The most recent version of the source code is always available in the project's 
  * Instructions for [http://code.google.com/p/easier-email-encryption/source/checkout checking out source code]
  * [http://code.google.com/p/easier-email-encryption/source/browse/ Browse the repository]
 
-*Easier Email Encryption (ECube) source archives*
+*Easier Email Encryption (Outlook Add-in) source archives*
  
  * ECube v1.0 project source: [ ZIP file] (7.39 MB)
 
-*ECube Standalone application source archives*
- * ECube Standalone v1.0 project source: [ ZIP file] (56KB)
+*Easier Email Encryption (Standalone application) source archives*
+ * ECube Standalone v1.0 project source: [ ZIP file] (2 MB)
 
 
 To download binary versions, please see the [http://code.google.com/p/easier-email-encryption/wiki/Downloads downloads page].
