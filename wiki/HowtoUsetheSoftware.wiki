@@ -1,0 +1,35 @@
+#summary Screenshot and Video tutorials on how to use the software.
+#labels Featured,Phase-Deploy
+= How To's and Videos =
+----
+----
+= Video Tutorials =
+=== <u>Outlook Add-in</u> ===
+  * [http://www.youtube.com Add-in Installation, Sending and Receiving encrypted messages.]
+<font color="White">=== <u>Standalone Application</u>===
+  * [http://www.youtube.com Reading encrypted messages through a standalone windows application.]
+</font>
+----
+
+= Screenshot Tutorials =
+=== <u>Outlook Add-in</u> ===
+  * [HowTos#Installation Installation]
+  * [HowTos#Un-Installation Un-Installation]
+  * [HowTos#Sending_and_Receiving_encrypted_messages Sending and Receiving encrypted messages]
+
+<font color="White">=== <u>Standalone Application</u>=== 
+
+  * [HowTos#Reading_encrypted_messages_through_a_standalone_windows_application Reading encrypted messages through a standalone windows application.]   
+   </font>
+
+----
+==Installation==
+#tutorial
+
+==Un-Installation==
+#tutorial
+
+==Sending and Receiving encrypted messages==
+#tutorial
+<font color="White">==Reading encrypted messages through a standalone windows application==
+#tutorial</font>
