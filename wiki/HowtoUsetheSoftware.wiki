@@ -1,5 +1,5 @@
 #summary Screenshot and Video tutorials on how to use the software.
-#labels Featured,Phase-Deploy
+#labels Featured,Phase-Deploy,VideoTutorials,UsageInstructions
 
 =<font color="darkblue" face="book antiqua"> How To's and Videos </font> =
 ----
