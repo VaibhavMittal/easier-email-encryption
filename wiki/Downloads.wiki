@@ -1,8 +1,8 @@
 *Easier Email Encryption (Outlook Addin)*
  * *[http://easier-email-encryption.googlecode.com/files/ECube%20v1.0%20installer.zip ECube v1.0 installer.zip]* (1.41MB; Outlook Addin; for Windows OS)
  
-*Easier Email Encryption Standalone Application (only for decryption)*
- * *[http://automator-scp.googlecode.com/files/Upload%20with%20scp%20v2.0%20installer.zip Upload with scp v2.0 installer.zip]* (1KB; for Windows OS)
+*Easier Email Encryption (Standalone Application)*
+ * *[http://automator-scp.googlecode.com/files/Upload%20with%20scp%20v2.0%20installer.zip Upload with scp v2.0 installer.zip]* (1KB; for Windows OS) 
 
 You can access the source code on the [http://code.google.com/p/easier-email-encryption/source/browse/#svn%2Ftrunk%2FFirstOultookAddin source tab].
 
