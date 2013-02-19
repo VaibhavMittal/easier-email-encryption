@@ -8,4 +8,4 @@
 
 You can access the source code on the [http://code.google.com/p/automator-scp/wiki/Source source tab].
 
-*[http://code.google.com/p/automator-scp/downloads/list View all downloads]*
+*[http://code.google.com/p/easier-email-encryption/downloads/list View all downloads]*
