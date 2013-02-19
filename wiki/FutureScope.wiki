@@ -1,6 +1,6 @@
 #summary Future Goals of the project
 
-= Future Scope =
+=<font color="darkblue" face="book antiqua"> Future Scope </font> =
 ----
 
 ===High Security Proposal===
