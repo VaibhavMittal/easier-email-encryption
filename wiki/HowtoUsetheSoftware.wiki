@@ -1,7 +1,7 @@
 #summary Screenshot and Video tutorials on how to use the software.
 #labels Featured,Phase-Deploy
-= How To's and Videos =
-----
+
+=<font color="darkblue" face="book antiqua"> How To's and Videos </font> =
 ----
 = Video Tutorials =
 === <u>Outlook Add-in</u> ===
