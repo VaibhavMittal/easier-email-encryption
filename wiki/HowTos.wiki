@@ -1,4 +1,5 @@
 #summary Screenshot and Video tutorials on how to use the software.
+#labels Featured,Phase-Deploy
 = How To's and Videos =
 ----
 ----
