@@ -1,3 +1,6 @@
+=<font color="darkblue" face="book antiqua"> Downloads </font> =
+----
+
 *Easier Email Encryption (Outlook Addin)*
  * *[http://easier-email-encryption.googlecode.com/files/ECube%20v1.0%20installer.zip ECube v1.0 installer.zip]* (1.41MB; Outlook Addin; for Windows OS)
  
