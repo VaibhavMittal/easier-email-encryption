@@ -8,3 +8,4 @@ Minimum Software Requirements:
   * Operating System: Windows XP/Vista/7
   * Microsoft .Net Framework 4.0 or above
   
+*Successfully tested on Outlook 2007, 2010 with Windows 7 & 8.*
