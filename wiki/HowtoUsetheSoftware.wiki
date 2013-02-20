@@ -36,6 +36,9 @@ Windows
 
 *NOTE*: The ECube v1.0 outlook add-in (prototype) has been successfully tested on Outlook 2007 and 2010 with Windows 7 and Windows 8.
 
+* *
+
+* *
 *Installation Steps***
 
 1)      Download and extract the “ECube installer.zip”.
