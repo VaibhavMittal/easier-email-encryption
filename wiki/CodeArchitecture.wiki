@@ -3,11 +3,12 @@
 
 = <font color="darkblue" face="book antiqua"> Software Architecture </font> =
 ----
-==Contents==
+<font size=4> *Contents* </font>
 
 <wiki:toc max_depth="3" />
 
 ----
+==Introduction==
 
 This document might be useful for anyone willing to do some further development on the project or some part of it. It gives a description of how the software code is organized and the logical workflow of the software.
 
@@ -73,7 +74,7 @@ It consists of the software logo image and icon named “secure_email.jpg” and
 
 * *
 
-
+* *
 === Description of Important Classes ===
 
 
@@ -87,8 +88,9 @@ Handles the Quick and High Security email encryption part of the software. It al
 || PublicisPasswordValid() || None || Boolean || Password validation.  Checks for empty password box and makes sure that the Password must be between 6 and 20 characters long, and must contain at least one Numeric Digit. ||
 || Public isSentMessageSaved() || None || Boolean || Returns true if message is sent and saved in the Sent folder of Outlook. ||
 
-
 * *
+
+* *
 
 *DecryptionPasswordDialogBox** class*
 
@@ -100,13 +102,15 @@ Handles the Email Decryption part of the software and provides GUI and various f
 || PublicsaveAttachments || (ByVal path As String) || String() || Saves all the attachments in the current outlook message item to the specified path.Returns the full path of all the attachments as a String-Array. ||
 || Private checkUserPassword() || None || Boolean || Verifies if the entered password is correct or not by trying to decrypt the attached smime.p7m file (which contains the message body).Returns true if the decryption process is successful else returns false. ||
 || PublicisPasswordValid() || None || Boolean || Returns False if the password box is empty. ||
+* *
 
+* *
 ----
 =Logical Workflow=
 
 This document walks you through the flow of the code and gives an overview of what is happening in the background of the GUI.
 
-== <u> A Walkthrough through the Code </u>==
+== A walk through the Code ==
 
 In this section I will use the software from a user perspective and will keep giving the details of what’s happening in the background (coding perspective).
 
@@ -185,7 +189,9 @@ The functions of the various options are self explanatory and occur in a separat
 While the form is being closed all the temporary files and folders are deleted and all the global variables are cleaned up (value is set to “Nothing”).
 
 
+* *
 
+* *
 === <u> Decryption Side </u> ===
 
 *USER: An encrypted message (with ECube software) is opened by the user.*
