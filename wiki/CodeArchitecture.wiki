@@ -3,6 +3,12 @@
 
 = <font color="darkblue" face="book antiqua"> Software Architecture </font> =
 ----
+==Contents==
+
+<wiki:toc max_depth="3" />
+
+----
+
 This document might be useful for anyone willing to do some further development on the project or some part of it. It gives a description of how the software code is organized and the logical workflow of the software.
 
 == <u>IDE Specifications</u> ==
@@ -67,7 +73,6 @@ It consists of the software logo image and icon named “secure_email.jpg” and
 
 * *
 
-* *
 
 === Description of Important Classes ===
 
@@ -83,6 +88,7 @@ Handles the Quick and High Security email encryption part of the software. It al
 || Public isSentMessageSaved() || None || Boolean || Returns true if message is sent and saved in the Sent folder of Outlook. ||
 
 
+* *
 
 *DecryptionPasswordDialogBox** class*
 
