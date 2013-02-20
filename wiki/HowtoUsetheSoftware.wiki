@@ -39,11 +39,12 @@ Windows
 * *
 
 * *
-*Installation Steps***
+
+<font size=4>*Installation Steps*</font>**
 
 1)      Download and extract the “ECube installer.zip”.
 
-*[Insert Screenshot]*
+http://easier-email-encryption.googlecode.com/files/Installation_Download_Installer.jpg
 
 2)      Run “Setup.exe”
 
