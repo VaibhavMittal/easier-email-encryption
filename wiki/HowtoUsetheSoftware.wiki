@@ -52,7 +52,7 @@ http://easier-email-encryption.googlecode.com/files/Installation_1.jpg
 
 3)      Program will check for the necessary prerequisites, if something is missing it will ask you to download and install it. Just click the Accept button and it will automatically download and install the necessary prerequisites.
 
-*[Insert Screenshot]*
+http://easier-email-encryption.googlecode.com/files/Installation_Prerequisites_Install.jpg
 
 4)      After all the prerequisites have been installed the ECube installation will start.
 
