@@ -126,7 +126,7 @@ The ThisAddin.vb class is initialized and any Startup code is executed (none at 
 
 Whenever a message is _composed_ the Encryption Ribbon (EncryptionRibbon.vb) is loaded into the outlook mail composing form, providing a GUI interface in the form of an extra ribbon tab.
 
-[Logical%20Workflow_files/image002.jpg]
+http://easier-email-encryption.googlecode.com/files/3-Quick_Security_Button.jpg
 
 _Figure: Encryption Ribbon_
 
@@ -138,7 +138,7 @@ When the Quick Security button is clicked (after the message has been composed) 
 
 The Encryption Dialog Box is then displayed (it resizes itself dynamically in the load method before displaying).
 
-[Logical%20Workflow_files/image004.jpg]
+http://easier-email-encryption.googlecode.com/files/EncryptionPasswordDialogBox.jpg
 
 _Figure: The Encryption Dialog Box_
 
@@ -198,7 +198,7 @@ While the form is being closed all the temporary files and folders are deleted a
 
 Whenever a message is _read_ the Decryption Ribbon (DecryptionRibbon.vb) is loaded into the outlook mail read form, providing a GUI interface in the form of an extra ribbon tab.
 
-[Logical%20Workflow_files/image006.jpg]
+http://easier-email-encryption.googlecode.com/files/8-Decryption_Ribbon.jpg
 
 _Figure: Decryption Ribbon_
 
@@ -208,7 +208,7 @@ The Decrypt Email ribbon consists of a button for decrypting the current encrypt
 
 While the _DecryptionPasswordDialogBox__ _is being loaded it_ _retrieves the password Hint from the message header and displays it on the dialog box.
 
-[Logical%20Workflow_files/image008.jpg]
+http://easier-email-encryption.googlecode.com/files/DecryptionPasswordDialogBox.jpg
 
 _Figure: The Decryption Dialog Box_
 
