@@ -1,25 +1,24 @@
-﻿Imports System.Collections
+﻿
 
-Imports Org.BouncyCastle.Asn1
-Imports Org.BouncyCastle.Asn1.Kisa
-Imports Org.BouncyCastle.Asn1.Nist
-Imports Org.BouncyCastle.Asn1.Ntt
-Imports Org.BouncyCastle.Asn1.Oiw
-Imports Org.BouncyCastle.Asn1.Pkcs
+'Imports Org.BouncyCastle.Asn1
+'Imports Org.BouncyCastle.Asn1.Kisa
+'Imports Org.BouncyCastle.Asn1.Nist
+'Imports Org.BouncyCastle.Asn1.Ntt
+'Imports Org.BouncyCastle.Asn1.Oiw
+'Imports Org.BouncyCastle.Asn1.Pkcs
 
-Imports Org.BouncyCastle.Crypto
-Imports Org.BouncyCastle.Crypto.Parameters
+'Imports Org.BouncyCastle.Crypto
+'Imports Org.BouncyCastle.Crypto.Parameters
 
-Imports Org.BouncyCastle.Utilities
-Imports Org.BouncyCastle.Utilities.Encoders
-Imports Org.BouncyCastle.X509
-Imports Org.BouncyCastle.Security
+'Imports Org.BouncyCastle.Utilities
+'Imports Org.BouncyCastle.Utilities.Encoders
+'Imports Org.BouncyCastle.X509
+'Imports Org.BouncyCastle.Security
 Imports Org.BouncyCastle.Cms
 
-
-Imports System
 Imports System.IO
 Imports System.Text
+Imports System.Collections
 Imports System.Security.Cryptography
 Imports FirstOultookAddin.PBKDF2_PKCS5
 
@@ -28,7 +27,6 @@ Imports System.Diagnostics
 Imports System.Linq
 Imports System.Reflection
 Imports System.Runtime.InteropServices
-Imports Outlook = Microsoft.Office.Interop.Outlook
 Imports Microsoft.Office.Interop.Outlook
 Imports System.Text.RegularExpressions
 
@@ -57,21 +55,17 @@ Public Class EncryptionPasswordDialogBox
 
 
         Try
-            'Progress Bar and Label formatting
-            encryptionStatusLabel.ForeColor = Drawing.Color.Maroon
-            encryptionStatusLabel.Text = "Encrypting Message..."
-            EncryptionProgressBar.Refresh()
-
             'Validations
             If isPasswordValid() = False Then
                 Exit Sub
             End If
 
+            'Progress Bar and Label formatting
+            encryptionStatusLabel.ForeColor = Drawing.Color.Maroon
+            encryptionStatusLabel.Text = "Encrypting Message..."
+            EncryptionProgressBar.Refresh()
 
             'Retrieve the Current MailMessage Details
-
-            'Dim currentItem As Outlook.MailItem
-            'currentItem = CType(Globals.ThisAddIn.Application.ActiveInspector.CurrentItem, Outlook.MailItem)
 
             Dim messageBody As String
             Dim messageRecipients As String
@@ -80,7 +74,7 @@ Public Class EncryptionPasswordDialogBox
             Dim messageSubject As String
             Dim messageAttachments As Outlook.Attachments
 
-            'Set messageBody variable according to the selected BodyFormat 
+            'Set messageBodyFormat variable according to the selected BodyFormat 
             Dim msgBodyFormat As OlBodyFormat = currentItem.BodyFormat
             If msgBodyFormat = OlBodyFormat.olFormatHTML Then
                 messageBody = currentItem.HTMLBody                  'HTML formatted message
@@ -105,8 +99,11 @@ Public Class EncryptionPasswordDialogBox
             EncryptionProgressBar.Value = 50
             EncryptionProgressBar.Refresh()
             encryptionStatusLabel.Text = "Message Data Retrieval Succesful"
+            encryptionStatusLabel.Location = New Drawing.Point(((Me.Size.Width - LogoPictureBox.Width - encryptionStatusLabel.Width) / 2) + LogoPictureBox.Width, _
+                                                             EncryptionProgressBar.Location.Y + EncryptionProgressBar.Height)
+
             encryptionStatusLabel.Refresh()
-            System.Threading.Thread.Sleep(500)
+            'System.Threading.Thread.Sleep(500)
 
             'Adding Custom Message Headers
             Dim pa As Outlook.PropertyAccessor
@@ -122,6 +119,9 @@ Public Class EncryptionPasswordDialogBox
             EncryptionProgressBar.Value = 75
             EncryptionProgressBar.Refresh()
             encryptionStatusLabel.Text = "Message Headers Added"
+            encryptionStatusLabel.Location = New Drawing.Point(((Me.Size.Width - LogoPictureBox.Width - encryptionStatusLabel.Width) / 2) + LogoPictureBox.Width, _
+                                                             EncryptionProgressBar.Location.Y + EncryptionProgressBar.Height)
+
             encryptionStatusLabel.Refresh()
             System.Threading.Thread.Sleep(500)
 
@@ -130,22 +130,12 @@ Public Class EncryptionPasswordDialogBox
             messageBodyData = System.Text.UTF8Encoding.UTF8.GetBytes(messageBody)    'Microsoft Outlook 2007 uses Wester European (UTF-8) Encoding Scheme to compose New Messages
 
             'hence the msg body text is converted to UTF-8 encoded bytes not ASCII.
-
             'A simple rule Read the text in the encoding it is present (eg: UTF-8 in Outlook) and Retrieve or Write the text in the same Encoding scheme to get the correct output.
+
             'Encrypt the messageBodyData
             Dim encodedData As Byte() = PasswordBasedEncryption(CmsEnvelopedDataGenerator.DesEde3Cbc, messageBodyData, PasswordTextBox.Text.ToString)
 
             currentItem.Body = "Instructions..." 'before encodedData
-
-            'Add encoded message as an S/MIME attachment
-
-            'Creating a smime file on users local hard disk
-            Dim smimeSource As String = System.IO.Path.GetTempPath & "smime.p7m"
-            Dim fs As New FileStream(smimeSource, FileMode.Create, FileAccess.Write)
-            fs.Write(encodedData, 0, encodedData.Length)
-            fs.Close()
-
-            'Attach body as S/MIME attachment after encrypting and attaching all the other attachments.
 
             'Encrypt the attachment(s) if any
             Dim encryptedAttachmentsSource As String() = New String(currentItem.Attachments.Count - 1) {}
@@ -159,6 +149,13 @@ Public Class EncryptionPasswordDialogBox
                 Next
             End If
 
+            'Add encoded message as an S/MIME attachment
+
+            'Creating a smime file on users local hard disk
+            Dim smimeSource As String = System.IO.Path.GetTempPath & "smime.p7m"
+            Dim fs As New FileStream(smimeSource, FileMode.Create, FileAccess.Write)
+            fs.Write(encodedData, 0, encodedData.Length)
+            fs.Close()
             'Attach the S/MIME file (containing message body) to the current message first
             ' TODO: Replace with attachment name
             Dim smimeDisplayName As String = "smime.p7m"
@@ -185,8 +182,11 @@ Public Class EncryptionPasswordDialogBox
             encryptionStatusLabel.ForeColor = Drawing.Color.Green
             encryptionStatusLabel.Font = New System.Drawing.Font("Arial", 9, Drawing.FontStyle.Bold)
             encryptionStatusLabel.Text = "Message Successfully Encrypted!"
+            encryptionStatusLabel.Location = New Drawing.Point(((Me.Size.Width - LogoPictureBox.Width - encryptionStatusLabel.Width) / 2) + LogoPictureBox.Width, _
+                                                             EncryptionProgressBar.Location.Y + EncryptionProgressBar.Height)
+
             encryptionStatusLabel.Refresh()
-            System.Threading.Thread.Sleep(1000)
+            System.Threading.Thread.Sleep(500)
 
             'Send the current Password Encrypted Message
             currentItem.Send()
@@ -208,7 +208,10 @@ Public Class EncryptionPasswordDialogBox
             Me.CenterToScreen()
             'Set progress bar to 100%
             EncryptionProgressBar.Value = EncryptionProgressBar.Maximum
-            encryptionStatusLabel.Text = " Message Sent Successfully!"
+
+            encryptionStatusLabel.Text = "Encryption Successfull! Sending Message.."
+            encryptionStatusLabel.Location = New Drawing.Point(((Me.Size.Width - LogoPictureBox.Width - encryptionStatusLabel.Width) / 2) + LogoPictureBox.Width, _
+                                                             EncryptionProgressBar.Location.Y + EncryptionProgressBar.Height)
             EncryptionProgressBar.Refresh()
             encryptionStatusLabel.Refresh()
             'System.Threading.Thread.Sleep(2000)
@@ -220,13 +223,6 @@ Public Class EncryptionPasswordDialogBox
 
             UserChoicePanel.Visible = True
             UserChoicePanel.Enabled = True
-
-            'Resize the Box height to fit everything
-            Dim temp As Integer = Me.Size.Height
-            If (UserChoicePanel.Location.Y + UserChoicePanel.Height) > temp Then
-
-                Me.Height = UserChoicePanel.Location.Y + UserChoicePanel.Height
-            End If
 
             UserChoicePanel.Show()
             UserChoicePanel.Focus()
@@ -809,7 +805,7 @@ Public Class EncryptionPasswordDialogBox
         objFolder1 = objNS1.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderSentMail)
         'objFolder1 = objNS1.getCurrentItem.SaveSentMessageFolder
 
-
+        'Keeps checking whether the message has been saved or not after every 2 seconds.
         While (Not isSentMessageSaved())
             System.Threading.Thread.Sleep(2000)
         End While
