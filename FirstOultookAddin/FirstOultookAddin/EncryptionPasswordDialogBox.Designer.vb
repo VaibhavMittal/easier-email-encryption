@@ -71,9 +71,9 @@ Partial Class EncryptionPasswordDialogBox
         Me.PasswordLabel.Location = New System.Drawing.Point(4, 35)
         Me.PasswordLabel.Margin = New System.Windows.Forms.Padding(5)
         Me.PasswordLabel.Name = "PasswordLabel"
-        Me.PasswordLabel.Size = New System.Drawing.Size(123, 17)
+        Me.PasswordLabel.Size = New System.Drawing.Size(136, 17)
         Me.PasswordLabel.TabIndex = 0
-        Me.PasswordLabel.Text = "Enter a &Password:"
+        Me.PasswordLabel.Text = "Enter a &Password* : "
         Me.PasswordLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'ConfirmPasswordLabel
@@ -83,9 +83,9 @@ Partial Class EncryptionPasswordDialogBox
         Me.ConfirmPasswordLabel.Location = New System.Drawing.Point(3, 71)
         Me.ConfirmPasswordLabel.Margin = New System.Windows.Forms.Padding(5)
         Me.ConfirmPasswordLabel.Name = "ConfirmPasswordLabel"
-        Me.ConfirmPasswordLabel.Size = New System.Drawing.Size(125, 17)
+        Me.ConfirmPasswordLabel.Size = New System.Drawing.Size(134, 17)
         Me.ConfirmPasswordLabel.TabIndex = 2
-        Me.ConfirmPasswordLabel.Text = "&Confirm Password:"
+        Me.ConfirmPasswordLabel.Text = "&Confirm Password* :"
         Me.ConfirmPasswordLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'PasswordTextBox
@@ -242,9 +242,9 @@ Partial Class EncryptionPasswordDialogBox
         'doneButton
         '
         Me.doneButton.BackColor = System.Drawing.SystemColors.ButtonFace
-        Me.doneButton.Location = New System.Drawing.Point(518, 62)
+        Me.doneButton.Location = New System.Drawing.Point(537, 62)
         Me.doneButton.Name = "doneButton"
-        Me.doneButton.Size = New System.Drawing.Size(154, 52)
+        Me.doneButton.Size = New System.Drawing.Size(139, 52)
         Me.doneButton.TabIndex = 5
         Me.doneButton.Text = "&Done"
         Me.doneButton.UseVisualStyleBackColor = False

@@ -167,9 +167,15 @@ Public Class DecryptionPasswordDialogBox
             Dim decryptedAttachmentsSource As String() = DecryptAttachments(PBEKey, messageAttachments)
 
             'Remove the current Encrypted attachments
-            Dim k As Integer = currentItemNewInspectorWindow.Attachments.Count
+            Dim currentMailItem As Outlook.MailItem = Nothing
+            If (dialogCallOrigin = "RightClickMenu") Then
+                currentMailItem = currentItem
+            ElseIf (dialogCallOrigin = "DoubleClick") Then
+                currentMailItem = currentItemNewInspectorWindow
+            End If
+            Dim k As Integer = currentMailItem.Attachments.Count
             For j As Integer = 1 To k
-                currentItemNewInspectorWindow.Attachments(1).Delete()
+                currentMailItem.Attachments(1).Delete()
             Next
 
             'Attach the decrypted attachment(s)
@@ -212,41 +218,6 @@ Public Class DecryptionPasswordDialogBox
 
             Me.Close()
             Me.Dispose()
-
-            'Some Jugaad
-            'Dim msgBodyFormat As Outlook.OlBodyFormat = currentItem.BodyFormat
-            'If msgBodyFormat = Outlook.OlBodyFormat.olFormatHTML Then
-            '    currentItemNewInspectorWindow.Body = decryptedMessage                 'HTML formatted message
-            'Else
-            '    currentItemNewInspectorWindow.HTMLBody = decryptedMessage                    'PlainText message
-            'End If
-
-            'currentItemNewInspectorWindow.HTMLBody = decryptedMessage 'For all type of formattings (HTML, PlainText, Rich Text, Unspecified etc.)
-
-            ''Previous Decryption Code
-            'Dim recipients As RecipientInformationStore = ed.GetRecipientInfos()
-            ''Assert.AreEqual(ed.EncryptionAlgOid, CmsEnvelopedDataGenerator.Aes128Cbc).
-
-            'Dim c As ICollection = recipients.GetRecipients()
-
-            ''Assert.AreEqual(1, c.Count)
-
-            'For Each recipient As PasswordRecipientInformation In c
-
-            '    'Dim key As CmsPbeKey = New Pkcs5Scheme2Utf8PbeKey("abc\u5639\u563b".ToCharArray(), recipient.KeyDerivationAlgorithm)
-            '    Dim key As CmsPbeKey = New Pkcs5Scheme2Utf8PbeKey(PBEkey.ToCharArray(), recipient.KeyDerivationAlgorithm) ' KEK
-            '    Dim recData As Byte() = recipient.GetContent(key)  ' Encrypted KEK key
-
-            '    Dim abc As String = ""
-            '    For Each temp In recData
-            '        abc = abc & temp & " "
-            '    Next
-
-            '    currentItem.Body = abc
-            '    'MsgBox(abc.ToString)
-
-            '    'Assert.IsTrue(Arrays.AreEqual(data, recData))
-            'Next
 
         Catch ex As Exception
             decryptionStatusLabel.ForeColor = Drawing.Color.Red

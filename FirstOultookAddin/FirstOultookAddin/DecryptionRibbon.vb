@@ -33,13 +33,12 @@ Public Class DecryptionRibbon
 
                 decryptionPasswordDialog.Show()
                 decryptionPasswordDialog.TopMost = True
-                decryptionPasswordDialog.Focus()
-                'Dim newInsectorWindow As Outlook.MailItem = CType(Globals.ThisAddIn.Application.ActiveInspector, Outlook.MailItem)
+                decryptionPasswordDialog.PasswordTextBox.Focus()
 
             End If
 
         Catch ex As Exception
-            'If not an Ecube encrypted email then disable the deccryption ribbon
+            'If not an Ecube encrypted email then disable the decryption ribbon
             ' Me.Dispose()
         End Try
 

@@ -238,7 +238,6 @@
   -->
   <ItemGroup>
     <AppDesigner Include="My Project\" />
-    <Compile Include="AESExample.vb" />
     <Compile Include="OutlookInspector.vb" />
     <Compile Include="OutlookItem.vb" />
     <Compile Include="PBKDF2.vb" />
