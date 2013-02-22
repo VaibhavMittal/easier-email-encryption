@@ -3,11 +3,10 @@
 Public Class DecryptionRibbon
 
 
-
     Private Sub DecryptionRibbon_Close(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Close
         Try
 
-        decryptionPasswordDialog.Close()
+            decryptionPasswordDialog.Close()
             ' Me.Dispose()
 
         Catch ex As Exception
@@ -38,8 +37,7 @@ Public Class DecryptionRibbon
             End If
 
         Catch ex As Exception
-            'If not an Ecube encrypted email then disable the decryption ribbon
-            ' Me.Dispose()
+            
         End Try
 
     End Sub

@@ -57,6 +57,7 @@ Partial Class EncryptionPasswordDialogBox
         Me.TopPanel = New System.Windows.Forms.Panel()
         Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         CType(Me.LogoPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ButtonPanelInitial.SuspendLayout()
         Me.UserChoicePanel.SuspendLayout()
@@ -92,15 +93,19 @@ Partial Class EncryptionPasswordDialogBox
         '
         Me.PasswordTextBox.Location = New System.Drawing.Point(148, 36)
         Me.PasswordTextBox.Margin = New System.Windows.Forms.Padding(10, 3, 3, 3)
+        Me.PasswordTextBox.MaxLength = 150
         Me.PasswordTextBox.Name = "PasswordTextBox"
         Me.PasswordTextBox.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.PasswordTextBox.Size = New System.Drawing.Size(197, 22)
         Me.PasswordTextBox.TabIndex = 1
+        Me.ToolTip1.SetToolTip(Me.PasswordTextBox, "Password must be between 6 and 100 characters long," & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & " and must contain at least o" & _
+                "ne Numeric Digit." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10))
         '
         'ConfirmPasswordTextBox
         '
         Me.ConfirmPasswordTextBox.Location = New System.Drawing.Point(148, 77)
         Me.ConfirmPasswordTextBox.Margin = New System.Windows.Forms.Padding(10, 3, 3, 3)
+        Me.ConfirmPasswordTextBox.MaxLength = 150
         Me.ConfirmPasswordTextBox.Name = "ConfirmPasswordTextBox"
         Me.ConfirmPasswordTextBox.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.ConfirmPasswordTextBox.Size = New System.Drawing.Size(197, 22)
@@ -197,13 +202,12 @@ Partial Class EncryptionPasswordDialogBox
         '
         'ICTimeTest
         '
-        Me.ICTimeTest.Location = New System.Drawing.Point(766, 45)
+        Me.ICTimeTest.Location = New System.Drawing.Point(12, 409)
         Me.ICTimeTest.Name = "ICTimeTest"
         Me.ICTimeTest.Size = New System.Drawing.Size(112, 98)
         Me.ICTimeTest.TabIndex = 13
         Me.ICTimeTest.Text = "iteration counter time test for 128 bit key"
         Me.ICTimeTest.UseVisualStyleBackColor = True
-        Me.ICTimeTest.Visible = False
         '
         'LogoPictureBox
         '
@@ -384,5 +388,6 @@ Partial Class EncryptionPasswordDialogBox
     Friend WithEvents TopPanel As System.Windows.Forms.Panel
     Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker
     Friend WithEvents Timer1 As System.Windows.Forms.Timer
+    Friend WithEvents ToolTip1 As System.Windows.Forms.ToolTip
 
 End Class

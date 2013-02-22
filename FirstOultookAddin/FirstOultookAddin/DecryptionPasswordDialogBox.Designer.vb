@@ -54,6 +54,7 @@ Partial Class DecryptionPasswordDialogBox
         'PasswordTextBox
         '
         Me.PasswordTextBox.Location = New System.Drawing.Point(428, 59)
+        Me.PasswordTextBox.MaxLength = 150
         Me.PasswordTextBox.Name = "PasswordTextBox"
         Me.PasswordTextBox.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.PasswordTextBox.Size = New System.Drawing.Size(220, 22)
