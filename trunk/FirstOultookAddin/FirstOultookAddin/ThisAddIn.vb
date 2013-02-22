@@ -1,4 +1,4 @@
-﻿Imports FirstOultookAddin.OutlookInspector
+﻿
 'Imports Microsoft.Office.Interop.Outlook
 
 

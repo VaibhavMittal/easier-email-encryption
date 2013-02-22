@@ -4,14 +4,6 @@ Imports System.IO
 
 Public Class DecryptionPasswordDialogBox
 
-    ' TODO: Insert code to perform custom authentication using the provided username and password 
-    ' (See http://go.microsoft.com/fwlink/?LinkId=35339).  
-    ' The custom principal can then be attached to the current thread's principal as follows: 
-    '     My.User.CurrentPrincipal = CustomPrincipal
-    ' where CustomPrincipal is the IPrincipal implementation used to perform authentication. 
-    ' Subsequently, My.User will return identity information encapsulated in the CustomPrincipal object
-    ' such as the username, display name, etc.
-
     'Global variables
     ' currently Selected Item as currentItem
     Dim currentItem As Outlook.MailItem = CType(Globals.ThisAddIn.Application.ActiveExplorer.Selection(1), Outlook.MailItem)
@@ -19,7 +11,7 @@ Public Class DecryptionPasswordDialogBox
     Dim isDecrypted As Boolean = False
 
     Sub New(ByVal dialogCallOrigin As String)
-        ' TODO: Complete member initialization 
+
         InitializeComponent()
         Me.dialogCallOrigin = dialogCallOrigin
     End Sub
@@ -239,7 +231,6 @@ Public Class DecryptionPasswordDialogBox
         End If
 
         Me.Close()
-        'Me.Dispose()    'Just Experimenting
 
     End Sub
 
@@ -251,29 +242,30 @@ Public Class DecryptionPasswordDialogBox
 
 
     Private Sub DecryptionPasswordDialogBox_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        'Retrieving Message Header
-        'Dim currentItem As Outlook.MailItem
-        'currentItem = CType(Globals.ThisAddIn.Application.ActiveExplorer.Selection(1), Outlook.MailItem)
+        Try
 
-        Me.Icon = My.Resources.ecubeicon
+            Me.Icon = My.Resources.ecubeicon
 
-        DecryptionRibbon.currentDecryptionRibbon.decryptEmailMessage.Enabled = False
+            DecryptionRibbon.currentDecryptionRibbon.decryptEmailMessage.Enabled = False
 
 
-        Dim pa As Microsoft.Office.Interop.Outlook.PropertyAccessor
-        pa = currentItem.PropertyAccessor
+            Dim pa As Microsoft.Office.Interop.Outlook.PropertyAccessor
+            pa = currentItem.PropertyAccessor
 
-        Dim hint As String = CType(pa.GetProperty("http://schemas.microsoft.com/mapi/string/{00020386-0000-0000-C000-000000000046}/X-PBE-Hint"), String)
-        HintLabel.Text = "Hint: " & hint                    'Set Hint value on DecryptionDialogBox as in the message header
-        Me.Text = """" & currentItem.Subject.ToString & """" & " sent by " & currentItem.SenderEmailAddress.ToString & " | Quick Security" 'Set DialogBox Title to Message Subject
+            Dim hint As String = CType(pa.GetProperty("http://schemas.microsoft.com/mapi/string/{00020386-0000-0000-C000-000000000046}/X-PBE-Hint"), String)
+            HintLabel.Text = "Hint: " & hint                    'Set Hint value on DecryptionDialogBox as in the message header
+            Me.Text = """" & currentItem.Subject.ToString & """" & " sent by " & currentItem.SenderEmailAddress.ToString & " | Quick Security" 'Set DialogBox Title to Message Subject
 
-        Me.Focus()
-        PasswordTextBox.Focus()
+            Me.Focus()
+            PasswordTextBox.Focus()
 
+        Catch ex As System.Exception
+            MsgBox(ex.Message, , "Something Went Wrong!")
+        End Try
     End Sub
 
     Public Function saveAttachments(ByVal path As String) As String()
-
+      
         Dim originalAttachmentsSource As String() = New String(currentItem.Attachments.Count - 1) {}
 
         'inBoxItems = inBoxItems.Restrict("[Unread] = true")
@@ -332,45 +324,53 @@ Public Class DecryptionPasswordDialogBox
 
     Private Function DecryptAttachments(ByRef PBEKey As String, ByVal msgAttachments As Outlook.Attachments) As String()
 
-        My.Computer.FileSystem.CreateDirectory(System.IO.Path.GetTempPath & "EcubeDecryptedAttachments")
+        Try
 
-        Dim originalAttachmentsSource As String() = saveAttachments(System.IO.Path.GetTempPath & "EcubeDecryptAttachments")
-        Dim decryptedAttachmentsSource As String() = New String(msgAttachments.Count - 2) {}
+            My.Computer.FileSystem.CreateDirectory(System.IO.Path.GetTempPath & "EcubeDecryptedAttachments")
 
-        For i As Integer = 0 To msgAttachments.Count - 1
-            'Dont decrypt smime.p7m attachment
-            If originalAttachmentsSource(i).Equals(System.IO.Path.GetTempPath & "EcubeDecryptAttachments\smime.p7m") Then
-                Continue For
-            End If
+            Dim originalAttachmentsSource As String() = saveAttachments(System.IO.Path.GetTempPath & "EcubeDecryptAttachments")
+            Dim decryptedAttachmentsSource As String() = New String(msgAttachments.Count - 2) {}
 
-            'Convert saved attachments to byte() {byteData()}
-            Dim byteData As Byte() = Nothing
-            Dim fs As New System.IO.FileStream(originalAttachmentsSource(i), FileMode.Open, FileAccess.Read)
-            Dim tempBuffer As Byte() = New Byte(fs.Length - 1) {}
+            For i As Integer = 0 To msgAttachments.Count - 1
+                'Dont decrypt smime.p7m attachment
+                If originalAttachmentsSource(i).Equals(System.IO.Path.GetTempPath & "EcubeDecryptAttachments\smime.p7m") Then
+                    Continue For
+                End If
 
-            fs.Read(tempBuffer, 0, fs.Length)
-            byteData = tempBuffer
-            fs.Close()
+                'Convert saved attachments to byte() {byteData()}
+                Dim byteData As Byte() = Nothing
+                Dim fs As New System.IO.FileStream(originalAttachmentsSource(i), FileMode.Open, FileAccess.Read)
+                Dim tempBuffer As Byte() = New Byte(fs.Length - 1) {}
 
-            'Decrypt the byteData()
-            Dim decryptedData As Byte() = PasswordBasedDecryption(byteData, PBEKey)
+                fs.Read(tempBuffer, 0, fs.Length)
+                byteData = tempBuffer
+                fs.Close()
 
-            'Write the decryptedData() byte array into a file and save it on users local hard disk
-            Dim smimeSource As String = System.IO.Path.GetTempPath & "EcubeDecryptedAttachments\" & (msgAttachments(i + 1).FileName)
-            smimeSource = smimeSource.Substring(0, smimeSource.Length - 4)
+                'Decrypt the byteData()
+                Dim decryptedData As Byte() = PasswordBasedDecryption(byteData, PBEKey)
 
-            Dim fs2 As New FileStream(smimeSource, FileMode.Create, FileAccess.Write)
-            fs2.Write(decryptedData, 0, decryptedData.Length)
-            fs2.Close()
+                'Write the decryptedData() byte array into a file and save it on users local hard disk
+                Dim smimeSource As String = System.IO.Path.GetTempPath & "EcubeDecryptedAttachments\" & (msgAttachments(i + 1).FileName)
+                smimeSource = smimeSource.Substring(0, smimeSource.Length - 4)
 
-            If i <> 0 Then
-                decryptedAttachmentsSource(i - 1) = smimeSource
-            ElseIf i = 0 Then
-                decryptedAttachmentsSource(i) = smimeSource
-            End If
-        Next
+                Dim fs2 As New FileStream(smimeSource, FileMode.Create, FileAccess.Write)
+                fs2.Write(decryptedData, 0, decryptedData.Length)
+                fs2.Close()
 
-        Return decryptedAttachmentsSource
+                If i <> 0 Then
+                    decryptedAttachmentsSource(i - 1) = smimeSource
+                ElseIf i = 0 Then
+                    decryptedAttachmentsSource(i) = smimeSource
+                End If
+            Next
+
+            Return decryptedAttachmentsSource
+
+        Catch ex As System.Exception
+            MsgBox(ex.Message, , "Something Went Wrong!")
+            Return New String() {}
+        End Try
+
     End Function
 
 
@@ -436,22 +436,28 @@ Public Class DecryptionPasswordDialogBox
     End Property
 
     Public Function isPasswordValid() As Boolean
+        Try
+            ' User Password
 
-        ' User Password
+            If String.IsNullOrEmpty(PasswordTextBox.Text) Then
+                PasswordTextBox.BackColor = Drawing.Color.Red
+                MsgBox("Password cannot be left Empty.", MsgBoxStyle.Exclamation, "No Password")
 
-        If String.IsNullOrEmpty(PasswordTextBox.Text) Then
-            PasswordTextBox.BackColor = Drawing.Color.Red
-            MsgBox("Password cannot be left Empty.", MsgBoxStyle.Exclamation, "No Password")
+                'tt1.Show(tt1.GetToolTip(PasswordTextBox), PasswordTextBox, 4000)
+                Return False
+                Exit Function
 
-            'tt1.Show(tt1.GetToolTip(PasswordTextBox), PasswordTextBox, 4000)
+            Else
+                Return True
+            End If
+
+        Catch ex As System.Exception
+            MsgBox(ex.Message, , "Something Went Wrong!")
             Return False
-            Exit Function
-
-        Else
-            Return True
-        End If
+        End Try
 
     End Function
+
 End Class
 
 

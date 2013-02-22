@@ -1,19 +1,4 @@
 ﻿
-
-'Imports Org.BouncyCastle.Asn1
-'Imports Org.BouncyCastle.Asn1.Kisa
-'Imports Org.BouncyCastle.Asn1.Nist
-'Imports Org.BouncyCastle.Asn1.Ntt
-'Imports Org.BouncyCastle.Asn1.Oiw
-'Imports Org.BouncyCastle.Asn1.Pkcs
-
-'Imports Org.BouncyCastle.Crypto
-'Imports Org.BouncyCastle.Crypto.Parameters
-
-'Imports Org.BouncyCastle.Utilities
-'Imports Org.BouncyCastle.Utilities.Encoders
-'Imports Org.BouncyCastle.X509
-'Imports Org.BouncyCastle.Security
 Imports Org.BouncyCastle.Cms
 
 Imports System.IO
@@ -32,14 +17,6 @@ Imports System.Text.RegularExpressions
 
 
 Public Class EncryptionPasswordDialogBox
-
-    ' TODO: Insert code to perform custom authentication using the provided username and password 
-    ' (See http://go.microsoft.com/fwlink/?LinkId=35339).  
-    ' The custom principal can then be attached to the current thread's principal as follows: 
-    '     My.User.CurrentPrincipal = CustomPrincipal
-    ' where CustomPrincipal is the IPrincipal implementation used to perform authentication. 
-    ' Subsequently, My.User will return identity information encapsulated in the CustomPrincipal object
-    ' such as the username, display name, etc.
 
     'Global Variables
     Dim currentItem As Outlook.MailItem = CType(Globals.ThisAddIn.Application.ActiveInspector.CurrentItem, Outlook.MailItem)
@@ -111,7 +88,6 @@ Public Class EncryptionPasswordDialogBox
             pa.SetProperty("http://schemas.microsoft.com/mapi/string/{00020386-0000-0000-C000-000000000046}/X-PBE-Version", "ECube-1.0")
             pa.SetProperty("http://schemas.microsoft.com/mapi/string/{00020386-0000-0000-C000-000000000046}/X-PBE-Hint", HintTextBox.Text.ToString)
             pa.SetProperty("http://schemas.microsoft.com/mapi/string/{00020386-0000-0000-C000-000000000046}/X-Encryption-Type", "Quick")
-            'pa.SetProperty("http://schemas.microsoft.com/mapi/string/{00020386-0000-0000-C000-000000000046}/Content-Type", "application/pkcs7-mime; smime-type=enveloped-data; name=smime.p7m")
             pa.SetProperty("http://schemas.microsoft.com/mapi/string/{00020386-0000-0000-C000-000000000046}/Content-Description", "S/MIME Encrypted Message")
 
 
@@ -229,10 +205,6 @@ Public Class EncryptionPasswordDialogBox
 
             Me.CancelButton = doneButton
 
-            'Me.Visible = False
-            'Me.Enabled = False
-            'Me.Close()
-
 
             '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
@@ -240,7 +212,7 @@ Public Class EncryptionPasswordDialogBox
         Catch ex As System.Exception
             'MsgBox(ex.ToString)
             encryptionStatusLabel.ForeColor = Drawing.Color.Red
-            encryptionStatusLabel.Text = "Failed to encrypt the message"
+            encryptionStatusLabel.Text = "Failed to encrypt the message! Please try again."
             'MsgBox(ex.Message.ToString, MsgBoxStyle.Exclamation, "An Error Occured:")
             EncryptionProgressBar.Value = 0
             EncryptionProgressBar.Refresh()
@@ -249,18 +221,21 @@ Public Class EncryptionPasswordDialogBox
     End Sub
 
     Private Sub Cancel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Cancel.Click
+        Try
+
+        
         Me.Close()
 
         MyOutlookAddIn.currentEncryptionRibbon.quickEncryption.Enabled = True
 
-        '       Globals.Ribbons.Ribbon1.quickEncryption.Enabled = True
-        'Me.Controls.Owner.Enabled = True
-        'Me.Owner.Enabled = True
-
+        Catch ex As System.Exception
+            MsgBox(ex.Message, , "Something Went Wrong!")
+        End Try
     End Sub
 
     Private Sub EncryptionPasswordDialogBox_FormClosed(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosedEventArgs) Handles Me.FormClosed
-        'Cleanup
+        Try
+            'Cleanup
         'Set all global variables to nothing
 
         originalMessage = Nothing
@@ -270,6 +245,9 @@ Public Class EncryptionPasswordDialogBox
         originalMsgTo = Nothing
         originalMsgSubject = Nothing
 
+        Catch ex As System.Exception
+            MsgBox(ex.Message, , "Something Went Wrong!")
+        End Try
     End Sub
 
 
@@ -277,41 +255,11 @@ Public Class EncryptionPasswordDialogBox
 
         Dim key As New Rfc2898DeriveBytes(Password, Salt, iterationCounter)
 
-        Return key
+            Return key
 
     End Function
 
-    Public Sub messageEncryption(ByRef CEK As Byte())
-        Dim encAlg As Aes = Aes.Create  ' Choose 3-DES as encryption type by creating an object of the TripleDES class.
-        encAlg.Mode = Security.Cryptography.CipherMode.CBC  'Set the 3-DES encryption mode to CBC (Cipher Block Chaining)
-        encAlg.Key = CEK          'Assigning the CEK as the encryption key for Triple DES
-
-        'Encrypting various message parts
-        Dim encStream As New MemoryStream()
-        Dim encrypt As New CryptoStream(encStream, encAlg.CreateEncryptor(), CryptoStreamMode.Write)
-        Dim utfD1 As Byte() = New System.Text.UTF8Encoding(False).GetBytes("Message data to be encrypted comes here.")
-        encrypt.Write(utfD1, 0, utfD1.Length)
-        encrypt.FlushFinalBlock()
-        encrypt.Close()
-        Dim edata1 As Byte() = encStream.ToArray()
-
-        'TESTING Code. Remove in the end.
-        Dim tempDisplay As String = ""
-        For Each item In edata1
-            Console.WriteLine("{0:X2} ", item)
-            tempDisplay = ""
-            tempDisplay += " " + item.ToString
-            tempDisplay += " edata1"
-        Next
-        MsgBox(tempDisplay)
-
-        '       CEK.Reset()
-
-        'Dim objOL As Outlook.Application
-        'Dim objNS As Outlook.NameSpace
-        'Dim objItem As Object
-
-    End Sub
+   
 
     Public Sub keyEncryption(ByRef KEK As String, ByVal CEK As String, ByVal IV As Byte())
 
@@ -328,23 +276,6 @@ Public Class EncryptionPasswordDialogBox
 
     End Sub
 
-    Public Sub sendEncryptedMessage()
-
-    End Sub
-
-
-
-    Function formatCEK() As Integer
-
-        Return 0
-    End Function
-
-
-    Function encryptCEK1() As Integer
-
-        Return 0
-    End Function
-
     Function encryptCEK2() As Integer
 
         Return 0
@@ -355,73 +286,16 @@ Public Class EncryptionPasswordDialogBox
         Return True
     End Function
 
-    Public Sub KEKDerivation()
-
-        Dim rng As New RNGCryptoServiceProvider()
-        Dim salt As Byte() = New Byte(15) {}
-        rng.GetBytes(salt)
-
-        Dim passwordDerive As New PBKDF2()
-
-
-        ' I want the key to be used for AES-128, thus I want the derived key to be
-        ' 128 bits. Thus I will be using 128/8 = 16 for dkLen (Derived Key Length) . 
-        'Similarly if you wanted a 256 bit key, dkLen would be 256/8 = 32. 
-
-        Dim result As Byte() = passwordDerive.GenerateDerivedKey(16, ASCIIEncoding.UTF8.GetBytes(PasswordTextBox.Text), salt, 1000)
-
-        'result would now contain the derived key. Use it for whatever cryptographic purpose now :)
-        'The following code is ONLY to show the derived key in a Textbox.
-
-        Dim x As String = ""
-
-        For i As Integer = 0 To result.Length - 1
-            x += result(i).ToString("X")
-        Next
-
-        MsgBox(x)
-        MsgBox("Bouncy Castle method: " & x.Length)
-
-    End Sub
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ICTimeTest.Click
-        'StampDate()
-        'AesExample.AESTest()
 
-        'Dim tempApp As Outlook.Application = Globals.ThisAddIn.Application
-        'Dim tempApp As New Outlook.Application()
-        'Dim tempNS As Outlook.NameSpace
-        ' Dim MailFolder As Outlook.MAPIFolder
-        'tempNS = tempApp.GetNamespace("MAPI")
-        'tempNS.Logon(, , True, True)
-
-        ' MsgBox(tempApp.ActiveWindow.GetType.Name.ToString) '_ComObject
-        ' MsgBox(tempApp.ActiveExplorer.GetType.Name.ToString) 'ExplorerClass
-        ' MsgBox(tempApp.ActiveInspector.GetType.Name.ToString) '_ComObject
-
-        'Outlook.OlFormRegionMode.olFormRegionCompose()
-        'Outlook.OlInspectorClose.olPromptForSave()
-        'Outlook.OlItemType.olMailItem()
-
-        Dim currentItem As Outlook.MailItem = CType(Globals.ThisAddIn.Application.ActiveInspector().CurrentItem, Outlook.MailItem)
-        'MailFolder = tempNS.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderOutbox)
-        'newMail = MailFolder.Items.Add(Outlook.OlItemType.olMailItem)
-        ' sent email will be saved in your outbox also
-
-        'currentItem.Subject = "Hardcoded Subject"
-        'currentItem.Body = "Just testing"
-
-        'MsgBox(currentItem.To & " " & currentItem.Subject & " " & currentItem.Body & " " & currentItem.Attachments.ToString)
-        'newMail.SaveSentMessageFolder = MailFolder
-        'newMail.Send()
-
-
-        'Get_Accurate_ProcessTime()
-        'MsgBox("Total Time Taken for IC Test 10^3 = " & IC10e3 & vbCrLf _
-        '       & "Total Time Taken for IC Test 10^4 = " & IC10e4 & vbCrLf _
-        '       & "Total Time Taken for IC Test 10^5 = " & IC10e5 & vbCrLf _
-        '       & "Total Time Taken for IC Test 10^6 = " & IC10e6)
+        Get_Accurate_ProcessTime()
+        MsgBox("Total Time Taken for IC Test 10^3 = " & IC10e3 & vbCrLf _
+               & "Total Time Taken for IC Test 10^4 = " & IC10e4 & vbCrLf _
+               & "Total Time Taken for IC Test 10^5 = " & IC10e5 & vbCrLf _
+               & "Total Time Taken for IC Test 10^6 = " & IC10e6)
 
     End Sub
+
     Public Sub ICTest(ByVal ICounter As Int32)
 
         Dim saltforKEK(8) As Byte
@@ -465,124 +339,30 @@ Public Class EncryptionPasswordDialogBox
 
     End Sub
 
-    Public Sub StampDate()
-        Dim objOL As Microsoft.Office.Interop.Outlook.Application = Nothing
-        Dim objNS As Outlook.NameSpace
-        Dim objItem As Object
-        Dim strStamp As String
-
-        On Error Resume Next
-        objOL.Quit()
-
-
-
-    End Sub
-
-
-    Function GetApplicationObject() As Outlook.Application
-
-        Dim application As Outlook.Application
-
-        'Check if there is an Outlook process running.
-        If Process.GetProcessesByName("OUTLOOK").Count() > 0 Then
-
-            ' If so, use the GetActiveObject method to obtain the process and cast it to an Application object.
-            application = DirectCast(Marshal.GetActiveObject("Outlook.Application"), Outlook.Application)
-        Else
-
-            ' If not, create a new instance of Outlook and log on to the default profile.
-            application = New Outlook.Application()
-            Dim ns As Outlook.NameSpace = application.GetNamespace("MAPI")
-            ns.Logon("", "", Missing.Value, Missing.Value)
-            ns = Nothing
-        End If
-
-        ' Return the Outlook Application object.
-        Return application
-    End Function
 
     Private Function PasswordBasedEncryption(ByVal CEKEncryptionAlgorithm As String, ByVal data As Byte(), ByVal PBEkey As String) As Byte()
+        Try
 
+        
         'Encryption Process
         Dim edGen As New CmsEnvelopedDataGenerator()
 
-        'edGen.AddPasswordRecipient(New Pkcs5Scheme2Utf8PbeKey("abc\u5639\u563b".ToCharArray(), New Byte(19) {}, 5), algorithm)
         edGen.AddPasswordRecipient(New Pkcs5Scheme2Utf8PbeKey(PBEkey.ToCharArray(), New Byte(19) {}, 10000), CEKEncryptionAlgorithm)
 
         Dim ed As CmsEnvelopedData = edGen.Generate(New CmsProcessableByteArray(data), CmsEnvelopedDataGenerator.Aes128Cbc) 'Encrypted msgbody data using AES-128CBC 
-        'MsgBox(ed.ToString())
 
         Dim encodedData As Byte() = ed.GetEncoded 'Creates ASN.1 encoded data
-        'Dim encodedData1 As String = Convert.ToBase64String(encodedData1)
 
         Return encodedData 'Returns the ASN.1 encoded data containing the CMSEnvelopedData object. Basically encrypted and encoded data.
 
+        Catch ex As System.Exception
+            MsgBox(ex.Message, , "Something Went Wrong!")
+            Return New Byte() {}
+        End Try
         '''''''''''''''''''''''''''''''''''''''Experimental Code created while Developing'''''''''''''''''''''''''''''''''''''''''''''
 
-        'Dim data As Byte() = Hex.Decode(hexNumbers.ToString)
-        'Dim data As Byte() = Hex.Decode("504b492d4320434d5320456e76656c6f706564446174612053616d706c65")
-
-        'Byte Array to String conversion and vice-versa
-        'Dim temp5 As String = ByteArraytoString(data)
-        'HintTextBox.Text = temp5
-        ''MsgBox(temp5)
-        'Dim tempData As Byte() = StrToByteArray(HintTextBox.Text)
-
-        'Dim temp6 As String = ""
-        'For Each value In tempData
-        '    temp6 = temp6 & value & " "
-        'Next
-        'MsgBox(temp6)
-
-        'Self attempted Byte() to String() conversion and vice-versa
-
-        ''Dim sassa As String = ""
-        ''For Each value In data
-        ''    sassa = sassa & value
-        ''Next
-        ''MsgBox("Data: " & sassa)
-
-        'Dim temp3 As String() = New String(29) {}
-        'Dim j As Integer = 0
-        'For Each value In data
-        '    temp3(j) = value.ToString
-        '    j = j + 1
-        'Next
-
-        'Dim temp4 As String = ""
-        'For Each value In temp3
-        '    temp4 = temp4 & value.ToString
-        'Next
-
-        'MsgBox("Temp4: " & temp4)
-
-        'Dim dataRetrieved As Byte() = New Byte(29) {}
-        'Dim k As Integer = 0
-        'For Each value In temp3
-        '    dataRetrieved(k) = Byte.Parse(value)
-        '    k = k + 1
-        'Next
-
-
-
-        ''Dim dataRetrieved As Byte() = Nothing
-        ''Dim xyz As Char() = sassa.ToCharArray
-        ''Dim i As Integer = 0
-        ''For Each asd As Char In xyz
-        ''    dataRetrieved(i) = (Byte.Parse(asd))
-        ''    i = i + 1
-        ''Next
-
-        'Dim temp2 As String = ""
-        'For Each value In dataRetrieved
-        '    temp2 = temp2 & value & " "
-        'Next
-        'MsgBox("Retrived Byte array: " & temp2)
-        ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-
-
-        ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
         ''Self attempted Byte() to String conversion and vice-versa instead of using base64 Encoding (You can also call this My Custom Encoding!)
+
         ''Encryption Side
         ''Byte() to String() conversion
         'Dim temp3 As String() = New String(encodedData.Length - 1) {}
@@ -600,8 +380,6 @@ Public Class EncryptionPasswordDialogBox
 
         ' MsgBox("Temp4: " & encodedData)
         ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-       
-        
 
         'Dim objOutlook1 As Outlook._Application
         'objOutlook1 = Globals.ThisAddIn.Application
@@ -610,7 +388,6 @@ Public Class EncryptionPasswordDialogBox
         'objFolder1 = objNS1.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderSentMail)
         '' objFolder1.Items.Add(Outlook.OlItemType.olMailItem)
         ''objFolder1.Items.Add(CType(currentItem, Outlook.MailItem)) 'Save the Sent Mail in SentBox Folder of outlook
-
 
 
         'currentItem.Attachments.Item(1).
@@ -638,7 +415,6 @@ Public Class EncryptionPasswordDialogBox
         'MsgBox("Retrived Byte array: " & temp2)
 
         ''''''''''''''''''''''''''''''''''''''''''''''''
-
 
         'Decryption Process at Receiver's end
 
@@ -674,20 +450,25 @@ Public Class EncryptionPasswordDialogBox
     End Function
 
     Private Sub EncryptionPasswordDialogBox_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
-        '' Clean up
-        'Delete all attachment stuff
-        If My.Computer.FileSystem.DirectoryExists(System.IO.Path.GetTempPath & "EcubeEncryptedAttachments") Then
-            My.Computer.FileSystem.DeleteDirectory(System.IO.Path.GetTempPath & "EcubeEncryptedAttachments", FileIO.DeleteDirectoryOption.DeleteAllContents)
-        End If
+        Try
+            '' Clean up continued...
+            'Delete all attachment stuff
+            If My.Computer.FileSystem.DirectoryExists(System.IO.Path.GetTempPath & "EcubeEncryptedAttachments") Then
+                My.Computer.FileSystem.DeleteDirectory(System.IO.Path.GetTempPath & "EcubeEncryptedAttachments", FileIO.DeleteDirectoryOption.DeleteAllContents)
+            End If
 
-        If My.Computer.FileSystem.DirectoryExists(System.IO.Path.GetTempPath & "EcubeOriginalAttachments") Then
-            My.Computer.FileSystem.DeleteDirectory(System.IO.Path.GetTempPath & "EcubeOriginalAttachments", FileIO.DeleteDirectoryOption.DeleteAllContents)
-        End If
+            If My.Computer.FileSystem.DirectoryExists(System.IO.Path.GetTempPath & "EcubeOriginalAttachments") Then
+                My.Computer.FileSystem.DeleteDirectory(System.IO.Path.GetTempPath & "EcubeOriginalAttachments", FileIO.DeleteDirectoryOption.DeleteAllContents)
+            End If
+        Catch ex As System.Exception
+            MsgBox(ex.Message, , "Something Went Wrong!")
+        End Try
     End Sub
 
     Private Sub EncryptionPasswordDialogBox_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        Try
 
-        Me.Icon = My.Resources.ecubeicon
+            Me.Icon = My.Resources.ecubeicon
 
         'Sizing
         Dim screenWidth As Integer = My.Computer.Screen.Bounds.Width
@@ -780,75 +561,82 @@ Public Class EncryptionPasswordDialogBox
         PasswordTextBox.Focus()
 
         MyOutlookAddIn.currentEncryptionRibbon.quickEncryption.Enabled = False
-        'Globals.Ribbons.Ribbon1.quickEncryption.Enabled = False
+
+        Catch ex As System.Exception
+            MsgBox(ex.Message, , "Something Went Wrong!")
+        End Try
 
     End Sub
 
     
 
     Private Sub doneButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles doneButton.Click
-        Me.Hide()
-        BackgroundWorker1.RunWorkerAsync()
-        Timer1.Enabled = True
-        Timer1.Start()
+        Try
+            Me.Hide()
+            BackgroundWorker1.RunWorkerAsync()
+            Timer1.Enabled = True
+            Timer1.Start()
+
+        Catch ex As System.Exception
+            MsgBox(ex.Message, , "Something Went Wrong!")
+        End Try
 
     End Sub
     Private Sub BackgroundWorker1_DoWork(ByVal sender As Object, ByVal e As ComponentModel.DoWorkEventArgs) Handles BackgroundWorker1.DoWork
 
-        'User Choice Code running in the background
-        'MsgBox("BG started...")
+        Try
+            'User Choice Code running in the background
+            'MsgBox("BG started...")
 
-        Dim objOutlook1 As Outlook.Application
-        objOutlook1 = Globals.ThisAddIn.Application
-        Dim objNS1 As Outlook.NameSpace = objOutlook1.Session
-        Dim objFolder1 As Outlook.MAPIFolder
-        objFolder1 = objNS1.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderSentMail)
-        'objFolder1 = objNS1.getCurrentItem.SaveSentMessageFolder
+            Dim objOutlook1 As Outlook.Application
+            objOutlook1 = Globals.ThisAddIn.Application
+            Dim objNS1 As Outlook.NameSpace = objOutlook1.Session
+            Dim objFolder1 As Outlook.MAPIFolder
+            objFolder1 = objNS1.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderSentMail)
 
-        'Keeps checking whether the message has been saved or not after every 2 seconds.
-        While (Not isSentMessageSaved())
-            System.Threading.Thread.Sleep(2000)
-        End While
+            'Keeps checking whether the message has been saved or not after every 2 seconds.
+            While (Not isSentMessageSaved())
+                System.Threading.Thread.Sleep(2000)
+            End While
 
-        'Function to perform on various choice selections
-        If saveEncryptedRB.Checked = True Then
-            'Save_Encrypted_Message
-            Exit Sub
-            'Me.Close()
+            'Function to perform on various choice selections
+            If saveEncryptedRB.Checked = True Then
+                'Save_Encrypted_Message
+                Exit Sub
 
-        ElseIf saveDecryptedRB.Checked = True Then
-            If isSentMessageSaved() Then
-                'Save_Decrypted_Message
-                'Get the message from Sent Box folder decrypt it and set its body as unencrypted message and save it.
-                Dim objOutlook As Outlook._Application
-                objOutlook = Globals.ThisAddIn.Application
-                Dim objNS As Outlook._NameSpace = objOutlook.Session
-                Dim objFolder As Outlook.MAPIFolder
-                objFolder = objNS.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderSentMail)
+            ElseIf saveDecryptedRB.Checked = True Then
+                If isSentMessageSaved() Then
+                    'Save_Decrypted_Message
+                    'Get the message from Sent Box folder decrypt it and set its body as unencrypted message and save it.
+                    Dim objOutlook As Outlook._Application
+                    objOutlook = Globals.ThisAddIn.Application
+                    Dim objNS As Outlook._NameSpace = objOutlook.Session
+                    Dim objFolder As Outlook.MAPIFolder
+                    objFolder = objNS.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderSentMail)
 
-                Dim recentlySentMessage As Outlook.MailItem = CType(objFolder.Items.GetLast(), Outlook.MailItem)
-                recentlySentMessage.HTMLBody = originalMessage
-                recentlySentMessage.Save()
+                    Dim recentlySentMessage As Outlook.MailItem = CType(objFolder.Items.GetLast(), Outlook.MailItem)
+                    recentlySentMessage.HTMLBody = originalMessage
+                    recentlySentMessage.Save()
 
-                'Save Decrypted Attachments
-                If originalMsgAttachments.Count > 0 Then
-                    'Delete all encrypted attachments
-                    Dim k As Integer = recentlySentMessage.Attachments.Count
-                    For j As Integer = 1 To k
-                        recentlySentMessage.Attachments(1).Delete()
-                    Next
+                    'Save Decrypted Attachments
+                    If originalMsgAttachments.Count > 0 Then
+                        'Delete all encrypted attachments
+                        Dim k As Integer = recentlySentMessage.Attachments.Count
+                        For j As Integer = 1 To k
+                            recentlySentMessage.Attachments(1).Delete()
+                        Next
 
-                    'Now Attach the original unencrypted attachment(s)
-                    For Each attachmentSource As String In originalAttachmentsSource
+                        'Now Attach the original unencrypted attachment(s)
+                        For Each attachmentSource As String In originalAttachmentsSource
 
-                        Dim msgAttachs As Outlook.Attachments = recentlySentMessage.Attachments
-                        Dim msgAttach As Outlook.Attachment
-                        msgAttach = msgAttachs.Add(attachmentSource.ToString)
-                    Next
-                End If
+                            Dim msgAttachs As Outlook.Attachments = recentlySentMessage.Attachments
+                            Dim msgAttach As Outlook.Attachment
+                            msgAttach = msgAttachs.Add(attachmentSource.ToString)
+                        Next
+                    End If
 
                     Exit Sub
-                    'Me.Close()     'Closes in Timer1_Tick
+
                 End If
 
             ElseIf deleteMessageRB.Checked = True Then
@@ -867,43 +655,53 @@ Public Class EncryptionPasswordDialogBox
                     recentMessage2.Delete()
 
                     Exit Sub
-                    'Me.Close() 'Closes in Timer1_Tick
+
 
                 End If
-                'Else
 
             End If
+
+        Catch ex As System.Exception
+            MsgBox(ex.Message, , "Something Went Wrong!")
+        End Try
     End Sub
 
 
     Public Function isSentMessageSaved() As Boolean
-        Dim objOutlook1 As Outlook.Application
-        objOutlook1 = Globals.ThisAddIn.Application
-        Dim objNS1 As Outlook.NameSpace = objOutlook1.Session
-        Dim objFolder1 As Outlook.MAPIFolder
-        objFolder1 = objNS1.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderSentMail)
+        Try
 
-        Dim checkRecentMessage As Outlook.MailItem = CType(objFolder1.Items.GetLast(), Outlook.MailItem)
-        'Dim currentMsgID As String = CType(checkRecentMessage.PropertyAccessor.GetProperty("http://schemas.microsoft.com/mapi/proptag/0x1035001E").ToString(), String)
-        'Dim currentMsgID As String = checkRecentMessage.EntryID
+            Dim objOutlook1 As Outlook.Application
+            objOutlook1 = Globals.ThisAddIn.Application
+            Dim objNS1 As Outlook.NameSpace = objOutlook1.Session
+            Dim objFolder1 As Outlook.MAPIFolder
+            objFolder1 = objNS1.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderSentMail)
 
-        Dim savedMsgDate As Date = checkRecentMessage.TaskCompletedDate
-        Dim savedMsgTo As String = checkRecentMessage.To
-        savedMsgTo = savedMsgTo.Remove(0, 1)
-        Dim l As Integer = savedMsgTo.Length
-        savedMsgTo = savedMsgTo.Substring(0, l - 1)
-        Dim savedMsgSubject As String = checkRecentMessage.Subject
+            Dim checkRecentMessage As Outlook.MailItem = CType(objFolder1.Items.GetLast(), Outlook.MailItem)
+            'Dim currentMsgID As String = CType(checkRecentMessage.PropertyAccessor.GetProperty("http://schemas.microsoft.com/mapi/proptag/0x1035001E").ToString(), String)
+            'Dim currentMsgID As String = checkRecentMessage.EntryID
 
-        Dim isMessageSavedInSentBox As Boolean = False
+            Dim savedMsgDate As Date = checkRecentMessage.TaskCompletedDate
+            Dim savedMsgTo As String = checkRecentMessage.To
+            savedMsgTo = savedMsgTo.Remove(0, 1)
+            Dim l As Integer = savedMsgTo.Length
+            savedMsgTo = savedMsgTo.Substring(0, l - 1)
+            Dim savedMsgSubject As String = checkRecentMessage.Subject
 
-        If (savedMsgDate.Equals(originalMsgDate)) Then
-            If (savedMsgTo = originalMsgTo) Then
-                If (savedMsgSubject = originalMsgSubject) Then
-                    isMessageSavedInSentBox = True
+            Dim isMessageSavedInSentBox As Boolean = False
+
+            If (savedMsgDate.Equals(originalMsgDate)) Then
+                If (savedMsgTo = originalMsgTo) Then
+                    If (savedMsgSubject = originalMsgSubject) Then
+                        isMessageSavedInSentBox = True
+                    End If
                 End If
             End If
-        End If
-        Return isMessageSavedInSentBox
+            Return isMessageSavedInSentBox
+
+        Catch ex As System.Exception
+            MsgBox(ex.Message, , "Something Went Wrong!")
+            Return False
+        End Try
 
     End Function
 
@@ -915,105 +713,116 @@ Public Class EncryptionPasswordDialogBox
 
 
     Public Function isPasswordValid() As Boolean
+        Try
+            Dim b As Integer = 0
+            Dim c As Integer = 0
+            ' User Password
 
-        Dim b As Integer = 0
-        Dim c As Integer = 0
-        ' User Password
-
-        If String.IsNullOrEmpty(PasswordTextBox.Text) Then
-            PasswordTextBox.BackColor = Drawing.Color.Red
-            MsgBox("Password cannot be left Empty.", MsgBoxStyle.Exclamation, "No Password")
-
-            'tt1.Show(tt1.GetToolTip(PasswordTextBox), PasswordTextBox, 4000)
-            Return False
-            Exit Function
-
-        Else
-
-            PasswordTextBox.BackColor = Drawing.Color.White
-            Dim password As Regex = New Regex("^(?=.*\d)(?=.*[a-zA-Z])(?!.*\s).{6,20}$")
-            Dim M As Match = password.Match(PasswordTextBox.Text)
-
-            If M.Success Then
-                b = 1
-            Else
+            If String.IsNullOrEmpty(PasswordTextBox.Text) Then
                 PasswordTextBox.BackColor = Drawing.Color.Red
-                MsgBox("Password must be between 6 and 20 characters long, and must contain at least one Numeric Digit.", MsgBoxStyle.Exclamation, "Invalid Password")
+                MsgBox("Password cannot be left Empty.", MsgBoxStyle.Exclamation, "No Password")
 
                 'tt1.Show(tt1.GetToolTip(PasswordTextBox), PasswordTextBox, 4000)
                 Return False
                 Exit Function
 
-            End If
-
-        End If
-
-        ' Confirm User Password
-
-        If String.IsNullOrEmpty(ConfirmPasswordTextBox.Text) Then
-            ConfirmPasswordTextBox.BackColor = Drawing.Color.Red
-        Else
-            ConfirmPasswordTextBox.BackColor = Drawing.Color.White
-            If ConfirmPasswordTextBox.Text = PasswordTextBox.Text Then
-                c = 1
             Else
-                ConfirmPasswordTextBox.BackColor = Drawing.Color.Red
-                MsgBox("Passwords Do Not Match!.", MsgBoxStyle.Exclamation, "Password Miismatch Error")
 
-                'tt1.Show(tt1.GetToolTip(ConfirmPasswordTextBox), ConfirmPasswordTextBox, 4000)
-                Return False
-                Exit Function
+                PasswordTextBox.BackColor = Drawing.Color.White
+                Dim password As Regex = New Regex("^(?=.*\d)(?=.*[a-zA-Z])(?!.*\s).{6,100}$")
+                Dim M As Match = password.Match(PasswordTextBox.Text)
+
+                If M.Success Then
+                    b = 1
+                Else
+                    PasswordTextBox.BackColor = Drawing.Color.Red
+                    MsgBox("Password must be between 6 and 100 characters long, and must contain at least one Numeric Digit.", MsgBoxStyle.Exclamation, "Invalid Password")
+
+                    ToolTip1.Show(ToolTip1.GetToolTip(PasswordTextBox), PasswordTextBox, 4000)
+                    Return False
+                    Exit Function
+
+                End If
+
             End If
 
-        End If
+            ' Confirm User Password
+
+            If String.IsNullOrEmpty(ConfirmPasswordTextBox.Text) Then
+                ConfirmPasswordTextBox.BackColor = Drawing.Color.Red
+            Else
+                ConfirmPasswordTextBox.BackColor = Drawing.Color.White
+                If ConfirmPasswordTextBox.Text = PasswordTextBox.Text Then
+                    c = 1
+                Else
+                    ConfirmPasswordTextBox.BackColor = Drawing.Color.Red
+                    MsgBox("Passwords Do Not Match!.", MsgBoxStyle.Exclamation, "Password Miismatch Error")
+
+                    'tt1.Show(tt1.GetToolTip(ConfirmPasswordTextBox), ConfirmPasswordTextBox, 4000)
+                    Return False
+                    Exit Function
+                End If
+
+            End If
 
 
-        If b = 1 And c = 1 Then
-            Return True
-        Else
+            If b = 1 And c = 1 Then
+                Return True
+            Else
+                Return False
+            End If
+
+        Catch ex As System.Exception
+            MsgBox(ex.Message, , "Something Went Wrong!")
             Return False
-        End If
+        End Try
 
     End Function
 
     Private Function EncryptAttachments(ByRef msgAttachments As Outlook.Attachments, ByVal CEKEncryptionAlgorithm As String, ByVal PBEkey As String) As String()
+        Try
 
-        My.Computer.FileSystem.CreateDirectory(System.IO.Path.GetTempPath & "EcubeOriginalAttachments")
-        My.Computer.FileSystem.CreateDirectory(System.IO.Path.GetTempPath & "EcubeEncryptedAttachments")
+            My.Computer.FileSystem.CreateDirectory(System.IO.Path.GetTempPath & "EcubeOriginalAttachments")
+            My.Computer.FileSystem.CreateDirectory(System.IO.Path.GetTempPath & "EcubeEncryptedAttachments")
 
 
-        'Dim originalAttachmentsSource As String() = New String(msgAttachments.Count - 1) {} 'Declared as Global Variable
-        Dim encryptedAttachmentsSource As String() = New String(msgAttachments.Count - 1) {}
+            'Dim originalAttachmentsSource As String() = New String(msgAttachments.Count - 1) {} 'Declared as Global Variable
+            Dim encryptedAttachmentsSource As String() = New String(msgAttachments.Count - 1) {}
 
-        For i As Integer = 0 To msgAttachments.Count - 1
+            For i As Integer = 0 To msgAttachments.Count - 1
 
-            'Save attachment to Temp\EcubeOriginalAttachments
-            msgAttachments(i + 1).SaveAsFile(System.IO.Path.GetTempPath & "EcubeOriginalAttachments\" & (msgAttachments(i + 1).FileName))
-            originalAttachmentsSource(i) = System.IO.Path.GetTempPath & "EcubeOriginalAttachments\" & (msgAttachments(i + 1).FileName)
+                'Save attachment to Temp\EcubeOriginalAttachments
+                msgAttachments(i + 1).SaveAsFile(System.IO.Path.GetTempPath & "EcubeOriginalAttachments\" & (msgAttachments(i + 1).FileName))
+                originalAttachmentsSource(i) = System.IO.Path.GetTempPath & "EcubeOriginalAttachments\" & (msgAttachments(i + 1).FileName)
 
-            'Convert attachment to byte() {byteData()}
-            Dim byteData As Byte() = Nothing
-            Dim fs As New System.IO.FileStream(originalAttachmentsSource(i), FileMode.Open, FileAccess.Read)
-            Dim tempBuffer As Byte() = New Byte(fs.Length - 1) {}
+                'Convert attachment to byte() {byteData()}
+                Dim byteData As Byte() = Nothing
+                Dim fs As New System.IO.FileStream(originalAttachmentsSource(i), FileMode.Open, FileAccess.Read)
+                Dim tempBuffer As Byte() = New Byte(fs.Length - 1) {}
 
-            fs.Read(tempBuffer, 0, fs.Length)
-            byteData = tempBuffer
-            fs.Close()
+                fs.Read(tempBuffer, 0, fs.Length)
+                byteData = tempBuffer
+                fs.Close()
 
-            'Envelope and encrypt the byteData()
-            Dim envelopedData As Byte() = PasswordBasedEncryption(CEKEncryptionAlgorithm, byteData, PBEkey)
+                'Envelope and encrypt the byteData()
+                Dim envelopedData As Byte() = PasswordBasedEncryption(CEKEncryptionAlgorithm, byteData, PBEkey)
 
-            'Write the envelopedData() byte array into a file and save it on users local hard disk
-            Dim smimeSource As String = System.IO.Path.GetTempPath & "EcubeEncryptedAttachments\" & (msgAttachments(i+1).FileName & ".p7m")
-            Dim fs2 As New FileStream(smimeSource, FileMode.Create, FileAccess.Write)
-            fs2.Write(envelopedData, 0, envelopedData.Length)
-            fs2.Close()
+                'Write the envelopedData() byte array into a file and save it on users local hard disk
+                Dim smimeSource As String = System.IO.Path.GetTempPath & "EcubeEncryptedAttachments\" & (msgAttachments(i + 1).FileName & ".p7m")
+                Dim fs2 As New FileStream(smimeSource, FileMode.Create, FileAccess.Write)
+                fs2.Write(envelopedData, 0, envelopedData.Length)
+                fs2.Close()
 
-            encryptedAttachmentsSource(i) = smimeSource
+                encryptedAttachmentsSource(i) = smimeSource
 
-        Next
+            Next
 
-        Return encryptedAttachmentsSource
+            Return encryptedAttachmentsSource
+
+        Catch ex As System.Exception
+            MsgBox(ex.Message, , "Something Went Wrong!")
+        End Try
+        Return New String() {}
     End Function
 
 
