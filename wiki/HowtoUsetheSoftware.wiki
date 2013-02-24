@@ -155,4 +155,12 @@ http://easier-email-encryption.googlecode.com/files/Enabling_Disabling_addins_1.
 
 http://easier-email-encryption.googlecode.com/files/Enabling_Disabling_addins_2.jpg
 
+== Standalone Message Decryptor ==
+1)      Download and extract the [http://easier-email-encryption.googlecode.com/files/EcubeStandaloneDecryptor-v1.0Executable.zip ECube Standalone Decryptor v1.0.zip].
+
+2)      Download and save the "smime.p7m" file from a web email client or any other.
+
+3)      Run the *"ECube Message Decryptor"* application.
+
+4)      Browse for the smime.p7m file path and enter the password. Click "Decrypt Message" to display the message in a web page.
 ----
