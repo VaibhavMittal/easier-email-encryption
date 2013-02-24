@@ -30,13 +30,12 @@ The following section gives an overview of the various Libraries, Projects and C
 
 The software consists of two projects:
 
-1)      EasierEmailEncryption : This is the main project consisting of all the functionalities and GUI.
-
-2)      Setup: This creates an _Installer_ for the EasierEmailEncryption project.
+  # EasierEmailEncryption : This is the main project consisting of all the functionalities and GUI.
+  # Setup: This creates an _Installer_ for the EasierEmailEncryption project.
 
 *Libraries*
 
-Besides from the Default libraries of a Microsoft Outlook Add-in project, I have included the [GIVE LINK BouncyCastle] library for all the cryptographic functions.
+Besides from the Default libraries of a Microsoft Outlook Add-in project, I have included the [http://www.bouncycastle.org/csharp/index.html BouncyCastle] library for all the cryptographic functions.
 
 Important Classes used from the BouncyCastle library:
 
