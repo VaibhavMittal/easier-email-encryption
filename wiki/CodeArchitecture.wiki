@@ -81,7 +81,7 @@ It consists of the software logo image and icon named “secure_email.jpg” and
 
 Handles the Quick and High Security email encryption part of the software. It also provides GUI and various functions for the same.
 
-|| Method Name || Arguments || Return Type || Details ||
+|| *Method Name* || *Arguments* || *Return Type* || *Details* ||
 || Private PasswordBasedEncryption || (ByVal *CEKEncryptionAlgorithm As String*, ByVal *data As Byte()*, ByVal *PBEkey As String*)<br/>_CEKEncryptionAlgorithm_: Encryption algorithm to encrypt the Content Encryption Key (CEK) using Key Encryption Key (KEK). <br/>_PBEKey_: Password which acts as a key to encrypt the data.  <br/>_Data_: Message data (String) in encoded sequence of bytes. || Byte() || Encrypts the data using AES-128 bit algorithm and encodes it using ASN.1 encoding scheme.Returns the ASN.1 encoded data containing the CMSEnvelopedData object. ||
 || Private EncryptAttachments || (ByRef *msgAttachments As Outlook.Attachments*, ByVal *CEKEncryptionAlgorithm As String*, ByVal *PBEkey As String*) <br/>_msgAttachments_ : Attachments object of an outook mail message. <br/>_CEKEncryptionAlgorithm_: Encryption algorithm to encrypt the Content Encryption Key (CEK) using Key Encryption Key (KEK). <br/>_PBEKey_: Password which acts as a key to encrypt the data. || String() || Encrypts all the attachments, saves them in the temporary folder on the local hard disk and returns the Full Path of the encrypted attachments. ||
 || PublicisPasswordValid() || None || Boolean || Password validation.  Checks for empty password box and makes sure that the Password must be between 6 and 20 characters long, and must contain at least one Numeric Digit. ||
