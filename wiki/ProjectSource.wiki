@@ -1,7 +1,7 @@
 =<font color="darkblue" face="book antiqua"> Source Code of the Project </font> =
 ----
 
-The source code for this project is available under the [http://en.wikipedia.org/wiki/BSD_licenses#3-clause_license_.28.22Revised_BSD_License.22.2C_.22New_BSD_License.22.2C_or_.22Modified_BSD_License.22.29 New BSD license].
+The source code for this project is available under the [http://opensource.org/licenses/BSD-3-Clause New BSD license].
 
 The most recent version of the source code is always available in the project's Subversion repository.
 
