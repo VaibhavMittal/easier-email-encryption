@@ -1,5 +1,5 @@
 #summary Release Notes
-#labels ReleaseNotes,Phase-Deploy
+#labels Phase-Deploy
 
 = <font color="darkblue" face="book antiqua"> ECube-v1.0 </font> =
 
