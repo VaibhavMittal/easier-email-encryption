@@ -12,7 +12,7 @@
 
 Email encryption refers to encryption, and often authentication, of email messages, which can be done to protect the email message data from being read by unintended recipients.
 
-The most popular techniques currently used for email encryption are S/MIME and PGP (Pretty Good Privacy). These are very secure techniques but involve a lot of effort and understanding from the user’s part. Studies have shown that more than 40% of users are unable to use these techniques because of their complex nature [TechnologyBackground#References (Garfinkel, 2005)]. Same problem was observed much earlier in PGP by Whitten and Tygar (Whitten, 1999). This has created a demand for a similar technique which is easy to use but is still secure.
+The most popular techniques currently used for email encryption are S/MIME and PGP (Pretty Good Privacy). These are very secure techniques but involve a lot of effort and understanding from the user’s part. Studies have shown that more than 40% of users are unable to use these techniques because of their complex nature [TechnologyBackground#References (Garfinkel, 2005)]. Same problem was observed much earlier in PGP by Whitten and Tygar [TechnologyBackground#References (Whitten, 1999)]. This has created a demand for a similar technique which is easy to use but is still secure.
 
 Our “Easier Email Encryption” proposal is an effort to address all these problems and provide an easy to use, intuitive interface to the user.
 
@@ -32,7 +32,7 @@ Following sections provide a description of the two techniques. Please note that
 
 This method provides a way of encrypting email message data (including attachments) using user supplied passwords of any form and length (UTF-8 characters supported).
 
-It is an implementation based on the “Password-based Encryption for CMS” (RFC3211) specification (Gutmann, 2001) which describes a password-based content encryption mechanism for CMS (Cryptographic Message Syntax).
+It is an implementation based on the “Password-based Encryption for CMS” (RFC3211) specification [TechnologyBackground#References (Gutmann, 2001)] which describes a password-based content encryption mechanism for CMS (Cryptographic Message Syntax).
 
 The RFC defines a new ReceipientInfoType as PasswordReceipientInfoType for the CMS which contains various values necessary for password based encryption.
 
@@ -65,13 +65,13 @@ The encrypted CEK is now sent along with the encrypted message (ASN.1 encoded da
 
 *_NOTE: All the above processes are performed in the prototype using the Bouncy Castle library_*.
 
-In order to satisfy the S/MIME standards as defined in RFC5751 (Ramsdell, 2010) the encoded data is written and attached as a file named _“smime.p7m”_ and is sent to the recipient. The message encoding used is base-64 encoding. Any other attachments are encrypted and a .p7m extension is added at the end of their filename eg: image1.jpg.p7m. At the receiver’s end all the necessary S/MIME header values are displayed as required.
+In order to satisfy the S/MIME standards as defined in RFC5751 [TechnologyBackground#References (Ramsdell, 2010)] the encoded data is written and attached as a file named _“smime.p7m”_ and is sent to the recipient. The message encoding used is base-64 encoding. Any other attachments are encrypted and a .p7m extension is added at the end of their filename eg: image1.jpg.p7m. At the receiver’s end all the necessary S/MIME header values are displayed as required.
 
 === High Security ===
 
 This feature allows for Encryption and Authentication of the email, in a user friendly way (without using Certificates).
 
-The main idea is to employ a modification of Diffie-Hellman key exchange algorithm in Email authentication, somewhat similar to the SOKE technique defined in the paper titled “Provably Secure Password-Based Authentication in TLS” (Abdalla, et al., 2006)
+The main idea is to employ a modification of Diffie-Hellman key exchange algorithm in Email authentication, somewhat similar to the SOKE technique defined in the paper titled “Provably Secure Password-Based Authentication in TLS” [TechnologyBackground#References (Abdalla, et al., 2006)]
 
 The advantages will be complete email security (encryption and authentication), which is easy to use.
 
@@ -87,7 +87,7 @@ It must however be noted that this proposal is still under development and might
 || *Cost* || Certificate Authority’s cost || Certificate Authority’s cost || No running cost (free prototype available) ||
 || *Certificate Required* || Yes || Yes || No ||
 
-MIT researchers made a usability study which suggests how difficult it is to send a secure email with current email encryption techniques like PGP and S/MIME (Garfinkel, 2005). Their survey suggested some features which most of the user’s wanted to see in a secure email system:
+MIT researchers made a usability study which suggests how difficult it is to send a secure email with current email encryption techniques like PGP and S/MIME [TechnologyBackground#References (Garfinkel, 2005)]. Their survey suggested some features which most of the user’s wanted to see in a secure email system:
 
  * Easy to use.
 
