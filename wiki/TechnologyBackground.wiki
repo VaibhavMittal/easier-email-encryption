@@ -18,6 +18,8 @@ Our “Easier Email Encryption” proposal is an effort to address all these pro
 
 In this project I have created a working prototype of the “Easier Email Encryption” technique, in the form of an Outlook Add-in, which demonstrates the above concept and its usability.
 
+* *
+
 == Easier Email Encryption Proposal ==
 
 To tackle the complex problems in email encryption, we have split our solution into two categories:
@@ -79,6 +81,8 @@ The only disadvantage might be that the sender and receiver might need to exchan
 
 It must however be noted that this proposal is still under development and might undergo significant changes, in which case the above might not hold.
 
+* *
+
 == Comparison of current Email Encryption Techniques & ECube ==
 
 || *Property* || *S/MIME* || *PGP* || *ECube* ||
@@ -96,6 +100,8 @@ MIT researchers made a usability study which suggests how difficult it is to sen
  * Ability to decrypt email from any computer.
 
 The Easier Email Encryption (ECube) is designed by keeping all the above factors in mind, which gives a user friendly and a secure email system.
+
+* *
 
 == Prototype Implementation ==
 
