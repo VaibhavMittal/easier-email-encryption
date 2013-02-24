@@ -5,7 +5,7 @@
  * *[http://easier-email-encryption.googlecode.com/files/ECube%20v1.0%20installer.zip ECube Addin v1.0 installer.zip]* (1.41MB; Outlook Addin; for Windows OS)
  
 *Easier Email Encryption (Standalone Application)*
- * *[http://easier-email-encryption.googlecode.com/files/EcubeStandaloneDecryptor-v1.0.zip ECube Standalone Decryptor v1.0.zip]* (547KB; Executable file ;for Windows OS) 
+ * *[http://easier-email-encryption.googlecode.com/files/EcubeStandaloneDecryptor-v1.0Executable.zip ECube Standalone Decryptor v1.0.zip]* (547KB; Executable file ;for Windows OS) 
 
 You can access the source code on the [http://code.google.com/p/easier-email-encryption/wiki/ProjectSource Source tab].
 
