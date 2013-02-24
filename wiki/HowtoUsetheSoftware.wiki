@@ -8,7 +8,8 @@
 
 = Video Tutorials =
 == <u>Outlook Add-in</u> ==
-  * [http://www.youtube.com Add-in Installation, Sending and Receiving encrypted messages.]
+ * <wiki:video url="http://www.youtube.com/watch?v=3LkNlTNHZzE"/>  
+* [http://www.youtube.com Add-in Installation, Sending and Receiving encrypted messages.]
 <font color="White">=== <u>Standalone Application</u>===
   * [http://www.youtube.com Reading encrypted messages through a standalone windows application.]
 </font>
