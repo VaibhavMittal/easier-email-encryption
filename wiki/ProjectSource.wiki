@@ -13,7 +13,7 @@ The most recent version of the source code is always available in the project's 
 
 *Easier Email Encryption (Outlook Add-in) source archives*
  
- * ECube Outlook Add-in v1.0 project source: [ ZIP file] (7.39 MB)
+ * ECube Outlook Add-in v1.0 project source: [http://easier-email-encryption.googlecode.com/files/ECube%20v1.0%20source.zip ZIP file] (2.01 MB)
 
 *Easier Email Encryption (Standalone application) source archives*
  * ECube Standalone Decryptor v1.0 project source: [http://easier-email-encryption.googlecode.com/files/ECubeStandaloneDecryptor-v1.0Source.zip ZIP file] (158 KB)
