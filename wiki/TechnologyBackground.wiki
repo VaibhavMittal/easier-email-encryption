@@ -12,7 +12,7 @@
 
 Email encryption refers to encryption, and often authentication, of email messages, which can be done to protect the email message data from being read by unintended recipients.
 
-The most popular techniques currently used for email encryption are S/MIME and PGP (Pretty Good Privacy). These are very secure techniques but involve a lot of effort and understanding from the user’s part. Studies have shown that more than 40% of users are unable to use these techniques because of their complex nature (Garfinkel, 2005). Same problem was observed much earlier in PGP by Whitten and Tygar (Whitten, 1999). This has created a demand for a similar technique which is easy to use but is still secure.
+The most popular techniques currently used for email encryption are S/MIME and PGP (Pretty Good Privacy). These are very secure techniques but involve a lot of effort and understanding from the user’s part. Studies have shown that more than 40% of users are unable to use these techniques because of their complex nature [TechnologyBackground#References (Garfinkel, 2005)]. Same problem was observed much earlier in PGP by Whitten and Tygar (Whitten, 1999). This has created a demand for a similar technique which is easy to use but is still secure.
 
 Our “Easier Email Encryption” proposal is an effort to address all these problems and provide an easy to use, intuitive interface to the user.
 
