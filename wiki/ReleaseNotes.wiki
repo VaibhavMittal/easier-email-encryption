@@ -1,22 +1,9 @@
 #summary Release Notes
+#labels ReleaseNotes,Phase-Deploy
 
 = ECube-v1.0=
 
-  * Password Based Encryption/Decryption
-  * Feature 2
-  * Feature 3
-
-= ECube-v1.0 (Beta)=
-
-  * Password Based Encryption/Decryption
-  * Feature 2
-  * Feature 3
-
-
-
-= Details =
-
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+  * Password Based Encryption/Decryption of email message and attachments.
+  * User choice on how to save email (encrypted/decrypted).
+  * Easy to use and intuitive GUI.
+  * Support for encryption/decryption of multiple messages at a time.
