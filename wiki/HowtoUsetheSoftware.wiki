@@ -57,7 +57,7 @@ http://easier-email-encryption.googlecode.com/files/Installation_1.jpg
 
 3)      Program will check for the necessary prerequisites, if something is missing it will ask you to download and install it. Just click the Accept button and it will automatically download and install the necessary prerequisites.
 
-http://easier-email-encryption.googlecode.com/files/Installation_Prerequisites_Install.jpg
+http://easier-email-encryption.googlecode.com/files/Installation_Prerequisites_Install.JPG
 
 4)      After all the prerequisites have been installed the ECube installation will start automatically.
 
@@ -100,11 +100,11 @@ http://easier-email-encryption.googlecode.com/files/4-Quick_Security_DialogBox.j
 
 5)      After the message has been encrypted and is being sent (in the background), a choice panel will allow you to either:
 
-·        Save the Encrypted message in Sent folder. (Default)
+  * Save the Encrypted message in Sent folder. (Default)
 
-·        Save the Decrypted message in Sent folder.
+  * Save the Decrypted message in Sent folder.
 
-·        Delete the message permanently (to remove complete trace of the message).
+  * Delete the message permanently (to remove complete trace of the message).
 
 Select an option which seems most appropriate to you and click “Done”.
 
@@ -154,3 +154,5 @@ http://easier-email-encryption.googlecode.com/files/Enabling_Disabling_addins_1.
 4)      Check or uncheck the add-in you want to enable or disable and click Ok.
 
 http://easier-email-encryption.googlecode.com/files/Enabling_Disabling_addins_2.jpg
+
+----
