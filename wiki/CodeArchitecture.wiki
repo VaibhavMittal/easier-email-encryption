@@ -82,8 +82,8 @@ It consists of the software logo image and icon named “secure_email.jpg” and
 Handles the Quick and High Security email encryption part of the software. It also provides GUI and various functions for the same.
 
 || Method Name || Arguments || Return Type || Details ||
-|| Private PasswordBasedEncryption || (ByVal CEKEncryptionAlgorithm As String, ByVal data As Byte(), ByVal PBEkey As String)* CEKEncryptionAlgorithm: Encryption algorithm to encrypt the Content Encryption Key (CEK) using Key Encryption Key (KEK).* PBEKey: Password which acts as a key to encrypt the data.*Data: Message data (String) in encoded sequence of bytes.* PBEKey: Password which acts as a key to encrypt the data. || Byte() || Encrypts the data using AES-128 bit algorithm and encodes it using ASN.1 encoding scheme.Returns the ASN.1 encoded data containing the CMSEnvelopedData object. ||
-|| Private EncryptAttachments || (ByRef msgAttachments As Outlook.Attachments, ByVal CEKEncryptionAlgorithm As String, ByVal PBEkey As String)*msgAttachments : Attachments object of an outook mail message.* CEKEncryptionAlgorithm: Encryption algorithm to encrypt the Content Encryption Key (CEK) using Key Encryption Key (KEK).* PBEKey: Password which acts as a key to encrypt the data. || String() || Encrypts all the attachments, saves them in the temporary folder on the local hard disk and returns the Full Path of the encrypted attachments. ||
+|| Private PasswordBasedEncryption || (ByVal *CEKEncryptionAlgorithm As String*, ByVal *data As Byte()*, ByVal *PBEkey As String*)<br/>_CEKEncryptionAlgorithm_: Encryption algorithm to encrypt the Content Encryption Key (CEK) using Key Encryption Key (KEK). <br/>_PBEKey_: Password which acts as a key to encrypt the data.  <br/>_Data_: Message data (String) in encoded sequence of bytes. || Byte() || Encrypts the data using AES-128 bit algorithm and encodes it using ASN.1 encoding scheme.Returns the ASN.1 encoded data containing the CMSEnvelopedData object. ||
+|| Private EncryptAttachments || (ByRef *msgAttachments As Outlook.Attachments*, ByVal *CEKEncryptionAlgorithm As String*, ByVal *PBEkey As String*) <br/>_msgAttachments_ : Attachments object of an outook mail message. <br/>_CEKEncryptionAlgorithm_: Encryption algorithm to encrypt the Content Encryption Key (CEK) using Key Encryption Key (KEK). <br/>_PBEKey_: Password which acts as a key to encrypt the data. || String() || Encrypts all the attachments, saves them in the temporary folder on the local hard disk and returns the Full Path of the encrypted attachments. ||
 || PublicisPasswordValid() || None || Boolean || Password validation.  Checks for empty password box and makes sure that the Password must be between 6 and 20 characters long, and must contain at least one Numeric Digit. ||
 || Public isSentMessageSaved() || None || Boolean || Returns true if message is sent and saved in the Sent folder of Outlook. ||
 
@@ -96,8 +96,8 @@ Handles the Quick and High Security email encryption part of the software. It al
 Handles the Email Decryption part of the software and provides GUI and various functions for the same. Decrypts a received message (if correct password is supplied) and displays its content to the user.
 
 || *Method Name* || *Arguments* || *Return Type* || *Details* ||
-|| Private PasswordBasedDecryption || (ByVal encodedData As Byte(), ByRef PBEKey As String)*encodedData: ASN.1 encoded message data containing the CMSEnvelopedData object.* PBEKey: Password which was used to encrypt the message. || Byte() || Takes Encoded Data and Key and returns the Decoded data in the form of a Byte-Array. ||
-|| Private DecryptAttachments || (ByRef PBEKey As String, ByVal msgAttachments As Outlook.Attachments)* PBEKey: Password which was used to encrypt the message.*msgAttachments : Attachments object of an ECube encrypted outlook mail message. || String() || Decrypts all the attachments, saves them in the temporary folder on the local hard disk and returns the Full Path of the decrypted attachments in a String-Array. ||
+|| Private PasswordBasedDecryption || (ByVal *encodedData As Byte()*, ByRef *PBEKey As String*) <br/>_encodedData_: ASN.1 encoded message data containing the CMSEnvelopedData object.<br/>_PBEKey_: Password which was used to encrypt the message. || Byte() || Takes Encoded Data and Key and returns the Decoded data in the form of a Byte-Array. ||
+|| Private DecryptAttachments || (ByRef *PBEKey As String*, ByVal *msgAttachments As Outlook.Attachments*) <br/>_PBEKey_: Password which was used to encrypt the message. <br/>_msgAttachments_ : Attachments object of an ECube encrypted outlook mail message. || String() || Decrypts all the attachments, saves them in the temporary folder on the local hard disk and returns the Full Path of the decrypted attachments in a String-Array. ||
 || PublicsaveAttachments || (ByVal path As String) || String() || Saves all the attachments in the current outlook message item to the specified path.Returns the full path of all the attachments as a String-Array. ||
 || Private checkUserPassword() || None || Boolean || Verifies if the entered password is correct or not by trying to decrypt the attached smime.p7m file (which contains the message body).Returns true if the decryption process is successful else returns false. ||
 || PublicisPasswordValid() || None || Boolean || Returns False if the password box is empty. ||
@@ -127,7 +127,7 @@ Whenever a message is _composed_ the Encryption Ribbon (EncryptionRibbon.vb) is 
 
 http://easier-email-encryption.googlecode.com/files/3-Quick_Security_Button.jpg
 
-_Figure: Encryption Ribbon_
+<p align="center">_Figure: Encryption Ribbon_</p>
 
 The Encrypt Email ribbon consists of two buttons for different types of security, namely Quick Security and High Security. As of now the High Security button is disabled as its theoretical proposal is still under development.
 
@@ -139,7 +139,7 @@ The Encryption Dialog Box is then displayed (it resizes itself dynamically in th
 
 http://easier-email-encryption.googlecode.com/files/EncryptionPasswordDialogBox.jpg
 
-_Figure: The Encryption Dialog Box_
+<p align="center">_Figure: The Encryption Dialog Box_</p>
 
 *USER: User sets a Password and a Hint (optional) and clicks the “Send Encrypted Message” button.*
 
@@ -199,7 +199,7 @@ Whenever a message is _read_ the Decryption Ribbon (DecryptionRibbon.vb) is load
 
 http://easier-email-encryption.googlecode.com/files/8-Decryption_Ribbon.jpg
 
-_Figure: Decryption Ribbon_
+<p align="center">_Figure: Decryption Ribbon_</P>
 
 A new instance of the ‘_DecryptionPasswordDialogBox__’ _(with parameter value as “DoubleClick”) is created and displayed in the ‘Load’ event of the decryption ribbon i.e. whenever the user opens a message in a new window, the _DecryptionPasswordDialogBox__ _will_ _be displayed with the message window.
 
@@ -209,7 +209,7 @@ While the _DecryptionPasswordDialogBox__ _is being loaded it_ _retrieves the pas
 
 http://easier-email-encryption.googlecode.com/files/DecryptionPasswordDialogBox.jpg
 
-_Figure: The Decryption Dialog Box_
+<p align="center">_Figure: The Decryption Dialog Box_</p>
 
 *USER: User enters a password in the form and clicks the _‘’Display Message”_ button*
 
@@ -238,3 +238,5 @@ b.      Check for correct password: the checkUserPassword() checks for the 
 In this case again a new instance of the ‘_DecryptionPasswordDialogBox__’ _but with parameter value as “RightClick”. The final decrypted message is displayed in the preview pane of the Outlook Explorer instead of a new window. Rest of the decryption process remains the same as above.
 
 NOTE: This method (Right Click) decrypts the message permanently and does not gives user the option to save it back as an encrypted message.
+
+----
