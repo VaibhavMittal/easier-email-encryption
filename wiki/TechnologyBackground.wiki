@@ -1,4 +1,5 @@
 #summary Details of the Technologies and Standards used.
+#labels Featured,Phase-Design
 
 = <font color="darkblue" face="book antiqua"> Technology Background </font> =
 ----
