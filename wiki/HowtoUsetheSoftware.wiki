@@ -7,12 +7,16 @@
 ----
 
 = Video Tutorials =
+<wiki:comment>
 == <u>Outlook Add-in</u> ==
  * <wiki:video url="http://www.youtube.com/watch?v=3LkNlTNHZzE"/>  
 * [http://www.youtube.com Add-in Installation, Sending and Receiving encrypted messages.]
 <font color="White">=== <u>Standalone Application</u>===
   * [http://www.youtube.com Reading encrypted messages through a standalone windows application.]
 </font>
+</wiki:comment>
+
+Coming Soon...
 ----
 
 = Screenshot Tutorials =
@@ -23,11 +27,11 @@
 
 *Prerequisites*
 
-·        Outlook 2007 or 2010
+  * Outlook 2007 or 2010
 
-·        .NET Framework 4.0 or higher.
+  * .NET Framework 4.0 or higher.
 
-·        Microsoft Visual Studio 2010 Tools for Office Runtime (x86 and x64)
+  * Microsoft Visual Studio 2010 Tools for Office Runtime (x86 and x64)
 
 NOTE: All the prerequisites except Outlook software will be downloaded and installed automatically by the add-in setup.
 
@@ -55,7 +59,7 @@ http://easier-email-encryption.googlecode.com/files/Installation_1.jpg
 
 http://easier-email-encryption.googlecode.com/files/Installation_Prerequisites_Install.jpg
 
-4)      After all the prerequisites have been installed the ECube installation will start.
+4)      After all the prerequisites have been installed the ECube installation will start automatically.
 
 5)      Just click Next button and continue with the installation.
 
