@@ -357,7 +357,6 @@ Public Class EncryptionPasswordDialogBox
 
         Catch ex As System.Exception
             MsgBox(ex.Message, , "Something Went Wrong!")
-            Return New Byte() {}
         End Try
         '''''''''''''''''''''''''''''''''''''''Experimental Code created while Developing'''''''''''''''''''''''''''''''''''''''''''''
 
@@ -700,7 +699,7 @@ Public Class EncryptionPasswordDialogBox
 
         Catch ex As System.Exception
             MsgBox(ex.Message, , "Something Went Wrong!")
-            Return False
+
         End Try
 
     End Function
@@ -774,7 +773,6 @@ Public Class EncryptionPasswordDialogBox
 
         Catch ex As System.Exception
             MsgBox(ex.Message, , "Something Went Wrong!")
-            Return False
         End Try
 
     End Function
@@ -822,7 +820,7 @@ Public Class EncryptionPasswordDialogBox
         Catch ex As System.Exception
             MsgBox(ex.Message, , "Something Went Wrong!")
         End Try
-        Return New String() {}
+
     End Function
 
 

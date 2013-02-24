@@ -368,7 +368,7 @@ Public Class DecryptionPasswordDialogBox
 
         Catch ex As System.Exception
             MsgBox(ex.Message, , "Something Went Wrong!")
-            Return New String() {}
+
         End Try
 
     End Function
@@ -453,7 +453,6 @@ Public Class DecryptionPasswordDialogBox
 
         Catch ex As System.Exception
             MsgBox(ex.Message, , "Something Went Wrong!")
-            Return False
         End Try
 
     End Function
