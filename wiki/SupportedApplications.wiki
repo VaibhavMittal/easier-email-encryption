@@ -1,7 +1,9 @@
 #summary Details of Supported Applications and Platforms
 #labels SupportedApplications,MinimumRequirements,Prerequisites
 
-= Microsoft Outlook =
+= <font color="darkblue" face="book antiqua"> Microsoft Outlook </font> =
+----
+
   * Outlook 2010
   * Outlook 2007
 
