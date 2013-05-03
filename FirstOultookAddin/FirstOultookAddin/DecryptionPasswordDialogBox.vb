@@ -88,11 +88,12 @@ Public Class DecryptionPasswordDialogBox
             Dim encodedData As Byte() = Nothing
 
             Try
+                'Save attachment
                 My.Computer.FileSystem.CreateDirectory(System.IO.Path.GetTempPath & "EcubeDecryptAttachments") 'Create a temp directory to store encrypted (received) message and attachments
 
                 Dim saveAttachment As Outlook.Attachment = currentItem.Attachments("smime.p7m")
                 saveAttachment.SaveAsFile(System.IO.Path.GetTempPath & "EcubeDecryptAttachments\" & (currentItem.Attachments("smime.p7m").FileName))
-
+                'Read encoded data from attachment
                 If My.Computer.FileSystem.FileExists(System.IO.Path.GetTempPath & "EcubeDecryptAttachments\smime.p7m") Then
 
                     Dim smimeSource As String = System.IO.Path.GetTempPath & "EcubeDecryptAttachments\smime.p7m"
@@ -158,15 +159,20 @@ Public Class DecryptionPasswordDialogBox
             'Decrypting the Attachments
             Dim decryptedAttachmentsSource As String() = DecryptAttachments(PBEKey, messageAttachments)
 
-            'Remove the current Encrypted attachments
+            'Remove all the current Encrypted attachments 
+            'Except the "smime.p7m" 
             Dim currentMailItem As Outlook.MailItem = Nothing
             If (dialogCallOrigin = "RightClickMenu") Then
                 currentMailItem = currentItem
             ElseIf (dialogCallOrigin = "DoubleClick") Then
                 currentMailItem = currentItemNewInspectorWindow
             End If
+
             Dim k As Integer = currentMailItem.Attachments.Count
             For j As Integer = 1 To k
+                If currentMailItem.Attachments(j).FileName = "smime.p7m" Then
+                    Continue For
+                End If
                 currentMailItem.Attachments(1).Delete()
             Next
 
@@ -183,6 +189,10 @@ Public Class DecryptionPasswordDialogBox
                 msgAttach = msgAttachs.Add(attachmentSource.ToString)
             Next
 
+            'Dim pa As Outlook.PropertyAccessor
+            'pa = currentItem.PropertyAccessor
+            'pa.DeleteProperty("http://schemas.microsoft.com/mapi/string/{00020386-0000-0000-C000-000000000046}/X-Encryption-Status")
+            'pa.SetProperty("http://schemas.microsoft.com/mapi/string/{00020386-0000-0000-C000-000000000046}/X-Encryption-Status", "Decrypted")
             isDecrypted = True 'Message Successfully Decrypted
 
             '' Clean up
@@ -300,7 +310,7 @@ Public Class DecryptionPasswordDialogBox
         Dim decodedEnvelopeData As New CmsEnvelopedData(encodedData)
         Dim recipient As PasswordRecipientInformation = decodedEnvelopeData.GetRecipientInfos().GetFirstRecipient(recipientID)
 
-        Dim key As CmsPbeKey = New Pkcs5Scheme2Utf8PbeKey(PBEKey.ToCharArray(), recipient.KeyDerivationAlgorithm)
+            Dim key As CmsPbeKey = New Pkcs5Scheme2Utf8PbeKey(PBEKey.ToCharArray(), recipient.KeyDerivationAlgorithm) 'Decryption is happening here!
         Dim decodedData As Byte() = New Byte(recipient.GetContent(key).Length - 1) {}
         decodedData = recipient.GetContent(key)
 
@@ -310,7 +320,7 @@ Public Class DecryptionPasswordDialogBox
         Catch ex As Exception
             If ex.Message.Contains("key corrupt") Then
                 decryptionStatusLabel.ForeColor = Drawing.Color.Red
-                decryptionStatusLabel.Text = "Password Incorrect. Please Try again!"
+                decryptionStatusLabel.Text = "Incorrect Secret. Please Try again!"
                 Return New Byte(0) {0}
             Else
                 decryptionStatusLabel.ForeColor = Drawing.Color.Red
@@ -441,7 +451,7 @@ Public Class DecryptionPasswordDialogBox
 
             If String.IsNullOrEmpty(PasswordTextBox.Text) Then
                 PasswordTextBox.BackColor = Drawing.Color.Red
-                MsgBox("Password cannot be left Empty.", MsgBoxStyle.Exclamation, "No Password")
+                MsgBox("Secret-Phrase cannot be left Empty.", MsgBoxStyle.Exclamation, "No Secret")
 
                 'tt1.Show(tt1.GetToolTip(PasswordTextBox), PasswordTextBox, 4000)
                 Return False

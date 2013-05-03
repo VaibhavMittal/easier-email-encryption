@@ -84,7 +84,7 @@
         Me.highSecurity.KeyTip = "H"
         Me.highSecurity.Label = "High Security"
         Me.highSecurity.Name = "highSecurity"
-        Me.highSecurity.ScreenTip = "Provides a highly secure message transmission."
+        Me.highSecurity.ScreenTip = "Provides a highly secure message transmission. (Currently Disabled)"
         Me.highSecurity.ShowImage = True
         Me.highSecurity.SuperTip = " The process involves several communications from both sides and might seem a lit" & _
             "tle complex."

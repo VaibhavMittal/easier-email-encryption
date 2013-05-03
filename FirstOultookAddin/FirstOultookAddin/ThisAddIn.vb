@@ -1,4 +1,6 @@
-﻿
+﻿Imports System.Windows.Forms
+Imports System.IO
+
 'Imports Microsoft.Office.Interop.Outlook
 
 
@@ -6,7 +8,116 @@ Public Class ThisAddIn
 
     Private Sub ThisAddIn_Startup(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Startup
         'MsgBox("The Encryption ad-in is STARTING up...")
+
+        'Dim xyz As Outlook.ApplicationEvents_11_Event
+        'AddHandler xyz, AddressOf MyItem_SendEventHandler
     End Sub
+    Private Sub ItemSend() Handles Application.ItemSend
+        Try
+            'MsgBox("Hahahah")
+            Dim currentItem As Outlook.MailItem = CType(Globals.ThisAddIn.Application.ActiveInspector.CurrentItem, Outlook.MailItem)
+            'currentItem.Body = "CHANGED"
+
+
+            'Do all the Checking here
+
+
+
+            'Checking Conditions to apply Oppurtunistic Encryption or not
+
+            'Conditions: Check if the Email is encrypted with ECube addin or not
+
+            ' Finding the Parent MailItem 
+            Dim parentMsg As Outlook.MailItem
+            parentMsg = FindParentMessage(currentItem)
+            If Not parentMsg Is Nothing Then
+
+                'parentMsg.Display()
+                'Check whether msg is encryptred with ECube or not
+            Else
+                '                currentItem.Send()
+                Exit Sub
+                'MsgBox("Error Message: Parent Message cannot be found!")
+            End If
+
+            Dim pa As Outlook.PropertyAccessor
+            pa = parentMsg.PropertyAccessor
+
+            'Dim currentItemHeader As String = pa.GetProperty("http://schemas.microsoft.com/mapi/id/PR_TRANSPORT_MESSAGE_HEADERS")
+            Dim addinName As String = pa.GetProperty("http://schemas.microsoft.com/mapi/string/{00020386-0000-0000-C000-000000000046}/X-PBE-Version")
+            Dim encryptionType As String = pa.GetProperty("http://schemas.microsoft.com/mapi/string/{00020386-0000-0000-C000-000000000046}/X-Encryption-Type")
+            If addinName.Contains("ECube") And encryptionType.Contains("Quick") Then
+                Dim OEDialog As New OEDialogBox(parentMsg)
+                OEDialog.ShowDialog()
+
+                'Dim OEQuery As DialogResult = OEDialog.ShowDialog()
+
+                'If OEQuery = DialogResult.Yes Then
+                '    MessageBox.Show("OE stuff comes here...") 'All Oppurtunistic Encryption functionality goes here
+
+                '    'Encrypt the reply message with the same key.
+                'ElseIf OEQuery = DialogResult.No Then
+                '    Exit Sub
+                'End If
+
+                ' Step 3: Get the encryption key and encrypt the current reply msg
+
+
+
+                'Dim inReplyToMsgIDValue As String = _
+                'pa.GetProperty("http://schemas.microsoft.com/mapi/proptag/PR_INTERNET_MESSAGE_ID") 'or use string/in-reply-to
+
+
+
+            Else
+                Exit Sub  'If NOT then continue with the normal "Send" functionality of Outlook
+            End If
+
+
+            'MsgBox("OE works!...Oh Yes")
+
+            ' Display a dialog box here asking to Encrypt or Dont Encrypt the reply message.
+            'Dim OEQuery As DialogResult = MessageBox.Show("Do u want to Encrypt this reply?", "Encrypt Reply", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+            
+
+
+
+
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+   
+
+    Function FindParentMessage(ByVal msg As Outlook.MailItem) As Outlook.MailItem
+        Dim strFind As String
+        Dim strIndex As String
+        Dim fld As Outlook.MAPIFolder
+        Dim itms As Outlook.Items
+        Dim itm As Outlook.MailItem
+        On Error Resume Next
+        strIndex = Left(msg.ConversationIndex, _
+                        Len(msg.ConversationIndex) - 10)
+        fld = Application.Session.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderInbox)
+        strFind = "[ConversationTopic] = " & _
+                  Chr(34) & msg.ConversationTopic & Chr(34)
+        itms = fld.Items.Restrict(strFind)
+
+        For Each itm In itms
+            If itm.ConversationIndex = strIndex Then
+
+                Return itm
+                'FindParentMessage = itm
+                Exit For
+            End If
+        Next
+        fld = Nothing
+        itms = Nothing
+        itm = Nothing
+
+
+    End Function
 
     Private Sub ThisAddIn_Shutdown() Handles Me.Shutdown
         'MsgBox("The Encryption ad-in is SHUTTING Down...")
@@ -31,7 +142,7 @@ Public Class ThisAddIn
                 decryptButton = CommandBar.Controls.Add(Office.MsoControlType.msoControlButton)
                 decryptButton.Caption = "Decrypt Message"
                 decryptButton.Tag = "DecryptContextMenuButton"
-                decryptButton.TooltipText = "Decrypt the Password Protected Message"
+                decryptButton.TooltipText = "Decrypt the Protected Message"
                 'decryptButton.BeginGroup = True
 
             End If
@@ -112,4 +223,29 @@ Public Class ThisAddIn
     '          anyNameHandler.Invoke(Me, e)
     '      End If
     '  End Sub
+
+
+    'Public Delegate Sub ApplicationEvents_11_ItemSendEventHandler(ByVal Item As Object, ByRef Cancel As Boolean)
+
+    'Public Sub MyItem_SendEventHandler(ByVal Item As Object, ByRef Cancel As Boolean)
+    '    MsgBox("HAHAHAH")
+    '    'Check if the Email is encrypted with ECube addin or not
+    '    Dim currentItem As Outlook.MailItem = CType(Globals.ThisAddIn.Application.ActiveInspector.CurrentItem, Outlook.MailItem)
+
+
+    '    Dim pa As Outlook.PropertyAccessor
+    '    pa = currentItem.PropertyAccessor
+
+    '    Dim temp As String = CType(pa.GetProperty("http://schemas.microsoft.com/mapi/string/{00020386-0000-0000-C000-000000000046}/X-PBE-Version"), String)
+    '    If temp.Contains("ECube") Then 'If YES then encrypt the Reply as well
+
+    '        MsgBox("OE works!")
+    '        'All Oppurtunistic Encryption functionality goes here
+
+    '        'Encrypt the reply message with the same key.
+    '    Else
+    '        Exit Sub 'If NOT then continue with the normal "Send" functionality of Outlook
+    '    End If
+    'End Sub
+
 End Class
