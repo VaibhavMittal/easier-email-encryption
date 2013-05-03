@@ -24,7 +24,8 @@ Public Class DecryptionRibbon
             pa = currentItem.PropertyAccessor
 
             Dim temp As String = CType(pa.GetProperty("http://schemas.microsoft.com/mapi/string/{00020386-0000-0000-C000-000000000046}/X-PBE-Version"), String)
-            If temp.Contains("ECube") Then
+            'Dim msgEncryptionStatus As String = CType(pa.GetProperty("http://schemas.microsoft.com/mapi/string/{00020386-0000-0000-C000-000000000046}/X-Encryption-Status"), String)
+            If temp.Contains("ECube") And currentItem.Body.Contains("Instructions to read this Encrypted Email") Then
 
                 decryptEmailTab.Visible = True
 

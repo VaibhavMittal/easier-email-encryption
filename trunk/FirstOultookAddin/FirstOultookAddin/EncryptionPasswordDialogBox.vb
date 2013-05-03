@@ -88,6 +88,7 @@ Public Class EncryptionPasswordDialogBox
             pa.SetProperty("http://schemas.microsoft.com/mapi/string/{00020386-0000-0000-C000-000000000046}/X-PBE-Version", "ECube-1.0")
             pa.SetProperty("http://schemas.microsoft.com/mapi/string/{00020386-0000-0000-C000-000000000046}/X-PBE-Hint", HintTextBox.Text.ToString)
             pa.SetProperty("http://schemas.microsoft.com/mapi/string/{00020386-0000-0000-C000-000000000046}/X-Encryption-Type", "Quick")
+            'pa.SetProperty("http://schemas.microsoft.com/mapi/string/{00020386-0000-0000-C000-000000000046}/X-Encryption-Status", "AES-Encrypted")
             pa.SetProperty("http://schemas.microsoft.com/mapi/string/{00020386-0000-0000-C000-000000000046}/Content-Description", "S/MIME Encrypted Message")
 
 
@@ -111,7 +112,11 @@ Public Class EncryptionPasswordDialogBox
             'Encrypt the messageBodyData
             Dim encodedData As Byte() = PasswordBasedEncryption(CmsEnvelopedDataGenerator.DesEde3Cbc, messageBodyData, PasswordTextBox.Text.ToString)
 
-            currentItem.Body = "Instructions..." 'before encodedData
+            'currentItem.Body = "<html><u><b>Instructions to read this Encrypted Email</b></u><br><br> 1) Open the message, enter the Secret-Phrase and click the """"Display Message"""" button to decrypt the message. <br><br><i> You may use the <b>Hint</b> to guess the Secret!</i></html>"
+            'currentItem.Body = "Instructions to read this Encrypted Email * Open the message, enter the Secret-Phrase and click the ""Display Message"" button to decrypt the message. <br><br>* While closing the message Reading pane, you can decide whether to <br><ul><li> save the message in <i>decrypted </i>form (plain text) by choosing <i>""Yes"" </i></li>or<li> save the message in <i>encrypted</i> form by choosing <i>""No""</i>,<br> when prompted by Outlook. </li><br></ul><i> You may use the Hint to guess the Secret!</i>"
+            currentItem.Body = RichTextBox1.Text
+
+            'before encodedData
 
             'Encrypt the attachment(s) if any
             Dim encryptedAttachmentsSource As String() = New String(currentItem.Attachments.Count - 1) {}
@@ -223,10 +228,10 @@ Public Class EncryptionPasswordDialogBox
     Private Sub Cancel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Cancel.Click
         Try
 
-        
-        Me.Close()
 
-        MyOutlookAddIn.currentEncryptionRibbon.quickEncryption.Enabled = True
+            Me.Close()
+
+            MyOutlookAddIn.currentEncryptionRibbon.quickEncryption.Enabled = True
 
         Catch ex As System.Exception
             MsgBox(ex.Message, , "Something Went Wrong!")
@@ -236,14 +241,14 @@ Public Class EncryptionPasswordDialogBox
     Private Sub EncryptionPasswordDialogBox_FormClosed(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosedEventArgs) Handles Me.FormClosed
         Try
             'Cleanup
-        'Set all global variables to nothing
+            'Set all global variables to nothing
 
-        originalMessage = Nothing
-        currentItem = Nothing
-        originalMsgID = Nothing
-        originalMsgDate = Nothing
-        originalMsgTo = Nothing
-        originalMsgSubject = Nothing
+            originalMessage = Nothing
+            currentItem = Nothing
+            originalMsgID = Nothing
+            originalMsgDate = Nothing
+            originalMsgTo = Nothing
+            originalMsgSubject = Nothing
 
         Catch ex As System.Exception
             MsgBox(ex.Message, , "Something Went Wrong!")
@@ -255,11 +260,11 @@ Public Class EncryptionPasswordDialogBox
 
         Dim key As New Rfc2898DeriveBytes(Password, Salt, iterationCounter)
 
-            Return key
+        Return key
 
     End Function
 
-   
+
 
     Public Sub keyEncryption(ByRef KEK As String, ByVal CEK As String, ByVal IV As Byte())
 
@@ -343,17 +348,16 @@ Public Class EncryptionPasswordDialogBox
     Private Function PasswordBasedEncryption(ByVal CEKEncryptionAlgorithm As String, ByVal data As Byte(), ByVal PBEkey As String) As Byte()
         Try
 
-        
-        'Encryption Process
-        Dim edGen As New CmsEnvelopedDataGenerator()
+            'Encryption Process
+            Dim edGen As New CmsEnvelopedDataGenerator()
 
-        edGen.AddPasswordRecipient(New Pkcs5Scheme2Utf8PbeKey(PBEkey.ToCharArray(), New Byte(19) {}, 10000), CEKEncryptionAlgorithm)
+            edGen.AddPasswordRecipient(New Pkcs5Scheme2Utf8PbeKey(PBEkey.ToCharArray(), New Byte(19) {}, 10000), CEKEncryptionAlgorithm)
 
-        Dim ed As CmsEnvelopedData = edGen.Generate(New CmsProcessableByteArray(data), CmsEnvelopedDataGenerator.Aes128Cbc) 'Encrypted msgbody data using AES-128CBC 
+            Dim ed As CmsEnvelopedData = edGen.Generate(New CmsProcessableByteArray(data), CmsEnvelopedDataGenerator.Aes128Cbc) 'Encrypted msgbody data using AES-128CBC 
 
-        Dim encodedData As Byte() = ed.GetEncoded 'Creates ASN.1 encoded data
+            Dim encodedData As Byte() = ed.GetEncoded 'Creates ASN.1 encoded data
 
-        Return encodedData 'Returns the ASN.1 encoded data containing the CMSEnvelopedData object. Basically encrypted and encoded data.
+            Return encodedData 'Returns the ASN.1 encoded data containing the CMSEnvelopedData object. Basically encrypted and encoded data.
 
         Catch ex As System.Exception
             MsgBox(ex.Message, , "Something Went Wrong!")
@@ -551,11 +555,11 @@ Public Class EncryptionPasswordDialogBox
                                             userChoiceIntroLabel.Location.Y + userChoiceIntroLabel.Height)
         doneButton.Location = New Drawing.Point(UserChoicePanel.Width - H_Spacing - doneButton.Width, (UserChoicePanel.Height - doneButton.Height) / 2)
 
-        If currentItem.Subject Is Nothing Or currentItem.To Is Nothing Then
-            Me.Text = """" & "[Empty Message]" & """" & " | Quick Security"
-        Else
-            Me.Text = """" & currentItem.Subject.ToString & """" & " sent by " & currentItem.To.ToString & " | Quick Security" 'Set DialogBox Title to Message Subject
-        End If
+            If currentItem.Subject = "" Or currentItem.To = "" Then
+                Me.Text = """" & "[Empty Message]" & """" & " | Quick Security"
+            Else
+                Me.Text = """" & currentItem.Subject.ToString & """" & " send to " & currentItem.To.ToString & " | Quick Security" 'Set DialogBox Title to Message Subject
+            End If
         saveEncryptedRB.Checked = True
         PasswordTextBox.Focus()
 
@@ -719,7 +723,7 @@ Public Class EncryptionPasswordDialogBox
 
             If String.IsNullOrEmpty(PasswordTextBox.Text) Then
                 PasswordTextBox.BackColor = Drawing.Color.Red
-                MsgBox("Password cannot be left Empty.", MsgBoxStyle.Exclamation, "No Password")
+                MsgBox("Secret-Phrase cannot be left Empty.", MsgBoxStyle.Exclamation, "No Secret")
 
                 'tt1.Show(tt1.GetToolTip(PasswordTextBox), PasswordTextBox, 4000)
                 Return False
@@ -728,14 +732,15 @@ Public Class EncryptionPasswordDialogBox
             Else
 
                 PasswordTextBox.BackColor = Drawing.Color.White
-                Dim password As Regex = New Regex("^(?=.*\d)(?=.*[a-zA-Z])(?!.*\s).{6,100}$")
+                'Dim password As Regex = New Regex("^(?=.*\d)(?=.*[a-zA-Z])(?!.*\s).{8,100}$") ' at least 8 chars and contains at least 1 Numeric character
+                Dim password As Regex = New Regex(".{8,}")
                 Dim M As Match = password.Match(PasswordTextBox.Text)
 
                 If M.Success Then
                     b = 1
                 Else
                     PasswordTextBox.BackColor = Drawing.Color.Red
-                    MsgBox("Password must be between 6 and 100 characters long, and must contain at least one Numeric Digit.", MsgBoxStyle.Exclamation, "Invalid Password")
+                    MsgBox("Secret-Phrase must be at least 8 characters long.", MsgBoxStyle.Exclamation, "Invalid Secret")
 
                     ToolTip1.Show(ToolTip1.GetToolTip(PasswordTextBox), PasswordTextBox, 4000)
                     Return False
@@ -755,7 +760,7 @@ Public Class EncryptionPasswordDialogBox
                     c = 1
                 Else
                     ConfirmPasswordTextBox.BackColor = Drawing.Color.Red
-                    MsgBox("Passwords Do Not Match!.", MsgBoxStyle.Exclamation, "Password Miismatch Error")
+                    MsgBox("Secrets Do Not Match!.", MsgBoxStyle.Exclamation, "Secrets Mismatch!")
 
                     'tt1.Show(tt1.GetToolTip(ConfirmPasswordTextBox), ConfirmPasswordTextBox, 4000)
                     Return False
@@ -835,5 +840,6 @@ Public Class EncryptionPasswordDialogBox
         End Get
     End Property
    
+    
 End Class
 

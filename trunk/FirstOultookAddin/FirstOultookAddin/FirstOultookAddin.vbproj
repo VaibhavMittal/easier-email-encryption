@@ -175,8 +175,9 @@
   -->
   <ItemGroup>
     <Reference Include="Accessibility" />
-    <Reference Include="BouncyCastle.Crypto">
-      <HintPath>..\..\BouncyCastle.Crypto.dll</HintPath>
+    <Reference Include="BouncyCastle.Crypto, Version=1.7.4114.6375, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Resources\BouncyCastle.Crypto.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -238,6 +239,12 @@
   -->
   <ItemGroup>
     <AppDesigner Include="My Project\" />
+    <Compile Include="OEDialogBox.Designer.vb">
+      <DependentUpon>OEDialogBox.vb</DependentUpon>
+    </Compile>
+    <Compile Include="OEDialogBox.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="OutlookItem.vb" />
     <Compile Include="PBKDF2.vb" />
     <Compile Include="EncryptionPasswordDialogBox.Designer.vb">
@@ -289,6 +296,9 @@
     <EmbeddedResource Include="DecryptionPasswordDialogBox.resx">
       <DependentUpon>DecryptionPasswordDialogBox.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="OEDialogBox.resx">
+      <DependentUpon>OEDialogBox.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
@@ -312,6 +322,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\secure_email.jpg" />
+    <Content Include="Resources\BouncyCastle.Crypto.dll" />
     <Content Include="Resources\ecubeicon.ico" />
     <Content Include="SetupMyOutlookAddIn\SetupMyOutlookAddIn.sln" />
   </ItemGroup>

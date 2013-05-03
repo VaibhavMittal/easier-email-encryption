@@ -44,11 +44,11 @@ Partial Class DecryptionPasswordDialogBox
         'PasswordLabel
         '
         Me.PasswordLabel.ForeColor = System.Drawing.SystemColors.HotTrack
-        Me.PasswordLabel.Location = New System.Drawing.Point(320, 59)
+        Me.PasswordLabel.Location = New System.Drawing.Point(320, 48)
         Me.PasswordLabel.Name = "PasswordLabel"
-        Me.PasswordLabel.Size = New System.Drawing.Size(220, 23)
+        Me.PasswordLabel.Size = New System.Drawing.Size(102, 44)
         Me.PasswordLabel.TabIndex = 2
-        Me.PasswordLabel.Text = "Enter &Password"
+        Me.PasswordLabel.Text = "&Secret Phrase"
         Me.PasswordLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'PasswordTextBox
@@ -83,9 +83,9 @@ Partial Class DecryptionPasswordDialogBox
         Me.Label1.ForeColor = System.Drawing.Color.ForestGreen
         Me.Label1.Location = New System.Drawing.Point(284, 16)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(306, 17)
+        Me.Label1.Size = New System.Drawing.Size(321, 17)
         Me.Label1.TabIndex = 6
-        Me.Label1.Text = "Enter password to display the secure message:"
+        Me.Label1.Text = "Enter the ""Secret"" to display the secure message:"
         '
         'LogoPictureBox
         '

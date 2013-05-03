@@ -41,3 +41,5 @@ C:\Users\Vaibhav\Desktop\Easier Emaill Encryption\ECube Outlook Addin\FirstOulto
 C:\Users\Vaibhav\Desktop\Easier Emaill Encryption\ECube Outlook Addin\FirstOultookAddin\FirstOultookAddin\obj\Debug\FirstOultookAddin.dll
 C:\Users\Vaibhav\Desktop\Easier Emaill Encryption\ECube Outlook Addin\FirstOultookAddin\FirstOultookAddin\obj\Debug\FirstOultookAddin.xml
 C:\Users\Vaibhav\Desktop\Easier Emaill Encryption\ECube Outlook Addin\FirstOultookAddin\FirstOultookAddin\obj\Debug\FirstOultookAddin.pdb
+C:\Users\Vaibhav\Desktop\Easier Emaill Encryption\ECube Outlook Addin\FirstOultookAddin\FirstOultookAddin\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\Vaibhav\Desktop\Easier Emaill Encryption\ECube Outlook Addin\FirstOultookAddin\FirstOultookAddin\obj\Debug\FirstOultookAddin.OEDialogBox.resources

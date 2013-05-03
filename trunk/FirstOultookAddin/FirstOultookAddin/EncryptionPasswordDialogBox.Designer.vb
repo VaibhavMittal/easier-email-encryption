@@ -31,6 +31,7 @@ Partial Class EncryptionPasswordDialogBox
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(EncryptionPasswordDialogBox))
         Me.PasswordLabel = New System.Windows.Forms.Label()
         Me.ConfirmPasswordLabel = New System.Windows.Forms.Label()
         Me.PasswordTextBox = New System.Windows.Forms.TextBox()
@@ -58,6 +59,7 @@ Partial Class EncryptionPasswordDialogBox
         Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
+        Me.RichTextBox1 = New System.Windows.Forms.RichTextBox()
         CType(Me.LogoPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ButtonPanelInitial.SuspendLayout()
         Me.UserChoicePanel.SuspendLayout()
@@ -72,9 +74,9 @@ Partial Class EncryptionPasswordDialogBox
         Me.PasswordLabel.Location = New System.Drawing.Point(4, 35)
         Me.PasswordLabel.Margin = New System.Windows.Forms.Padding(5)
         Me.PasswordLabel.Name = "PasswordLabel"
-        Me.PasswordLabel.Size = New System.Drawing.Size(136, 17)
+        Me.PasswordLabel.Size = New System.Drawing.Size(116, 17)
         Me.PasswordLabel.TabIndex = 0
-        Me.PasswordLabel.Text = "Enter a &Password* : "
+        Me.PasswordLabel.Text = "Enter a &Secret* : "
         Me.PasswordLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'ConfirmPasswordLabel
@@ -84,9 +86,9 @@ Partial Class EncryptionPasswordDialogBox
         Me.ConfirmPasswordLabel.Location = New System.Drawing.Point(3, 71)
         Me.ConfirmPasswordLabel.Margin = New System.Windows.Forms.Padding(5)
         Me.ConfirmPasswordLabel.Name = "ConfirmPasswordLabel"
-        Me.ConfirmPasswordLabel.Size = New System.Drawing.Size(134, 17)
+        Me.ConfirmPasswordLabel.Size = New System.Drawing.Size(114, 17)
         Me.ConfirmPasswordLabel.TabIndex = 2
-        Me.ConfirmPasswordLabel.Text = "&Confirm Password* :"
+        Me.ConfirmPasswordLabel.Text = "&Confirm Secret* :"
         Me.ConfirmPasswordLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'PasswordTextBox
@@ -135,9 +137,9 @@ Partial Class EncryptionPasswordDialogBox
         Me.HintLabel.Location = New System.Drawing.Point(4, 118)
         Me.HintLabel.Margin = New System.Windows.Forms.Padding(5)
         Me.HintLabel.Name = "HintLabel"
-        Me.HintLabel.Size = New System.Drawing.Size(106, 17)
+        Me.HintLabel.Size = New System.Drawing.Size(122, 17)
         Me.HintLabel.TabIndex = 6
-        Me.HintLabel.Text = "Password &Hint: "
+        Me.HintLabel.Text = "&Hint for Receiver: "
         Me.HintLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'HintTextBox
@@ -334,6 +336,15 @@ Partial Class EncryptionPasswordDialogBox
         '
         Me.Timer1.Interval = 5000
         '
+        'RichTextBox1
+        '
+        Me.RichTextBox1.Location = New System.Drawing.Point(12, 513)
+        Me.RichTextBox1.Name = "RichTextBox1"
+        Me.RichTextBox1.Size = New System.Drawing.Size(133, 32)
+        Me.RichTextBox1.TabIndex = 17
+        Me.RichTextBox1.Text = resources.GetString("RichTextBox1.Text")
+        Me.RichTextBox1.Visible = False
+        '
         'EncryptionPasswordDialogBox
         '
         Me.AcceptButton = Me.SendEncryptedMessageButton
@@ -342,6 +353,7 @@ Partial Class EncryptionPasswordDialogBox
         Me.BackColor = System.Drawing.SystemColors.Control
         Me.CancelButton = Me.Cancel
         Me.ClientSize = New System.Drawing.Size(894, 565)
+        Me.Controls.Add(Me.RichTextBox1)
         Me.Controls.Add(Me.TopPanel)
         Me.Controls.Add(Me.UserChoicePanel)
         Me.Controls.Add(Me.ButtonPanelInitial)
@@ -389,5 +401,6 @@ Partial Class EncryptionPasswordDialogBox
     Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker
     Friend WithEvents Timer1 As System.Windows.Forms.Timer
     Friend WithEvents ToolTip1 As System.Windows.Forms.ToolTip
+    Friend WithEvents RichTextBox1 As System.Windows.Forms.RichTextBox
 
 End Class
