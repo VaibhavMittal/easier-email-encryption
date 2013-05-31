@@ -41,7 +41,7 @@ Partial Class OEDialogBox
         'HintLabel
         '
         Me.HintLabel.AutoSize = True
-        Me.HintLabel.Location = New System.Drawing.Point(320, 109)
+        Me.HintLabel.Location = New System.Drawing.Point(329, 159)
         Me.HintLabel.Name = "HintLabel"
         Me.HintLabel.Size = New System.Drawing.Size(41, 17)
         Me.HintLabel.TabIndex = 15
@@ -53,13 +53,14 @@ Partial Class OEDialogBox
         Me.Label1.ForeColor = System.Drawing.Color.ForestGreen
         Me.Label1.Location = New System.Drawing.Point(284, 18)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(463, 17)
+        Me.Label1.Size = New System.Drawing.Size(393, 68)
         Me.Label1.TabIndex = 14
-        Me.Label1.Text = "Enter the same Secret-Phrase you used to decrypt the Parent Message:"
+        Me.Label1.Text = "Would you like to encrypt your reply?" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "If so, enter the same secret phrase below " & _
+            "and click ""Encrypt""." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Otherwise, click ""Don't encrypt"""
         '
         'PasswordTextBox
         '
-        Me.PasswordTextBox.Location = New System.Drawing.Point(428, 74)
+        Me.PasswordTextBox.Location = New System.Drawing.Point(437, 124)
         Me.PasswordTextBox.MaxLength = 150
         Me.PasswordTextBox.Name = "PasswordTextBox"
         Me.PasswordTextBox.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
@@ -69,7 +70,7 @@ Partial Class OEDialogBox
         'PasswordLabel
         '
         Me.PasswordLabel.ForeColor = System.Drawing.SystemColors.HotTrack
-        Me.PasswordLabel.Location = New System.Drawing.Point(320, 63)
+        Me.PasswordLabel.Location = New System.Drawing.Point(329, 113)
         Me.PasswordLabel.Name = "PasswordLabel"
         Me.PasswordLabel.Size = New System.Drawing.Size(102, 44)
         Me.PasswordLabel.TabIndex = 13
@@ -88,7 +89,7 @@ Partial Class OEDialogBox
         '
         'EncryptReply
         '
-        Me.EncryptReply.Location = New System.Drawing.Point(639, 151)
+        Me.EncryptReply.Location = New System.Drawing.Point(641, 179)
         Me.EncryptReply.Name = "EncryptReply"
         Me.EncryptReply.Size = New System.Drawing.Size(134, 56)
         Me.EncryptReply.TabIndex = 16
@@ -98,7 +99,7 @@ Partial Class OEDialogBox
         'DontEncryptReply
         '
         Me.DontEncryptReply.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.DontEncryptReply.Location = New System.Drawing.Point(494, 151)
+        Me.DontEncryptReply.Location = New System.Drawing.Point(505, 179)
         Me.DontEncryptReply.Name = "DontEncryptReply"
         Me.DontEncryptReply.Size = New System.Drawing.Size(126, 56)
         Me.DontEncryptReply.TabIndex = 17
@@ -108,7 +109,7 @@ Partial Class OEDialogBox
         'EncryptionProgressLabel
         '
         Me.EncryptionProgressLabel.AutoSize = True
-        Me.EncryptionProgressLabel.Location = New System.Drawing.Point(472, 54)
+        Me.EncryptionProgressLabel.Location = New System.Drawing.Point(481, 104)
         Me.EncryptionProgressLabel.Name = "EncryptionProgressLabel"
         Me.EncryptionProgressLabel.Size = New System.Drawing.Size(119, 17)
         Me.EncryptionProgressLabel.TabIndex = 18
@@ -116,7 +117,7 @@ Partial Class OEDialogBox
         '
         'RichTextBox1
         '
-        Me.RichTextBox1.Location = New System.Drawing.Point(119, 175)
+        Me.RichTextBox1.Location = New System.Drawing.Point(119, 206)
         Me.RichTextBox1.Name = "RichTextBox1"
         Me.RichTextBox1.Size = New System.Drawing.Size(133, 32)
         Me.RichTextBox1.TabIndex = 19
@@ -128,7 +129,7 @@ Partial Class OEDialogBox
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.DontEncryptReply
-        Me.ClientSize = New System.Drawing.Size(785, 210)
+        Me.ClientSize = New System.Drawing.Size(785, 242)
         Me.Controls.Add(Me.RichTextBox1)
         Me.Controls.Add(Me.EncryptionProgressLabel)
         Me.Controls.Add(Me.DontEncryptReply)
