@@ -170,9 +170,9 @@ Partial Class EncryptionPasswordDialogBox
         Me.IntroLabel.Location = New System.Drawing.Point(8, 8)
         Me.IntroLabel.Margin = New System.Windows.Forms.Padding(5)
         Me.IntroLabel.Name = "IntroLabel"
-        Me.IntroLabel.Size = New System.Drawing.Size(329, 17)
+        Me.IntroLabel.Size = New System.Drawing.Size(340, 17)
         Me.IntroLabel.TabIndex = 9
-        Me.IntroLabel.Text = "Enter the following details to encrypt your message"
+        Me.IntroLabel.Text = "Enter a Secret only known to you and the receiver(s)"
         '
         'EncryptionProgressBar
         '
