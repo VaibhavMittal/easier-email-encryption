@@ -15,8 +15,14 @@
     {
         "Entry"
         {
+        "MsmKey" = "8:_03AD6C2AC3C741218E0CB39D744E23F0"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_18E0FF9A3CA5D215659053B9789BB3A8"
-        "OwnerKey" = "8:_C1465F822630452ABBB9BCCBDD69644B"
+        "OwnerKey" = "8:_03AD6C2AC3C741218E0CB39D744E23F0"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -28,13 +34,19 @@
         "Entry"
         {
         "MsmKey" = "8:_1B72E4337F8C339B5FF48441C2F0F191"
-        "OwnerKey" = "8:_C1465F822630452ABBB9BCCBDD69644B"
+        "OwnerKey" = "8:_03AD6C2AC3C741218E0CB39D744E23F0"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_61F8DCAEEDBDC7407470A441628083A7"
-        "OwnerKey" = "8:_C1465F822630452ABBB9BCCBDD69644B"
+        "MsmKey" = "8:_326586807BC5F7930D12A480AF9E3B81"
+        "OwnerKey" = "8:_03AD6C2AC3C741218E0CB39D744E23F0"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_38D071800351470182DC817C40780FDE"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -46,25 +58,25 @@
         "Entry"
         {
         "MsmKey" = "8:_6AB049F5B310D350D6BFBA4A496F736B"
-        "OwnerKey" = "8:_C1465F822630452ABBB9BCCBDD69644B"
+        "OwnerKey" = "8:_03AD6C2AC3C741218E0CB39D744E23F0"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_787B73678A4B8F57FAFADC1E25F81262"
-        "OwnerKey" = "8:_C1465F822630452ABBB9BCCBDD69644B"
+        "OwnerKey" = "8:_03AD6C2AC3C741218E0CB39D744E23F0"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_7D0ADD410FDE4D349D3DCA85A27F8CAE"
-        "OwnerKey" = "8:_C1465F822630452ABBB9BCCBDD69644B"
+        "OwnerKey" = "8:_03AD6C2AC3C741218E0CB39D744E23F0"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_8E0C89D0229CD4493087E8D5A5DF29EB"
-        "OwnerKey" = "8:_C1465F822630452ABBB9BCCBDD69644B"
+        "OwnerKey" = "8:_03AD6C2AC3C741218E0CB39D744E23F0"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -76,18 +88,6 @@
         "Entry"
         {
         "MsmKey" = "8:_C0B2206CE6614643B03989BD29E696E7"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_C1465F822630452ABBB9BCCBDD69644B"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_C92CBFC941CC4B0A8EEE46971DFA090E"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -106,31 +106,37 @@
         "Entry"
         {
         "MsmKey" = "8:_CCEE49FF3599C1401BB26BDF83E20BE5"
-        "OwnerKey" = "8:_C1465F822630452ABBB9BCCBDD69644B"
+        "OwnerKey" = "8:_03AD6C2AC3C741218E0CB39D744E23F0"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_DB321C4AA372A4BD7F9F2B3B78C821E3"
-        "OwnerKey" = "8:_C1465F822630452ABBB9BCCBDD69644B"
+        "OwnerKey" = "8:_03AD6C2AC3C741218E0CB39D744E23F0"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_F3D44536B4E94153AAF38C8BB13EF027"
+        "MsmKey" = "8:_FD2EDE654B5A4CA5B6D6FFD1FEE71FA4"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_C1465F822630452ABBB9BCCBDD69644B"
+        "OwnerKey" = "8:_1B72E4337F8C339B5FF48441C2F0F191"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_61F8DCAEEDBDC7407470A441628083A7"
+        "OwnerKey" = "8:_03AD6C2AC3C741218E0CB39D744E23F0"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_326586807BC5F7930D12A480AF9E3B81"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -173,12 +179,6 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_CCEE49FF3599C1401BB26BDF83E20BE5"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_1B72E4337F8C339B5FF48441C2F0F191"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -353,14 +353,14 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_61F8DCAEEDBDC7407470A441628083A7"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_326586807BC5F7930D12A480AF9E3B81"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:BouncyCastle.Crypto, Version=1.6.1.0, Culture=neutral, PublicKeyToken=0e99375e54769942"
+            "AssemblyAsmDisplayName" = "8:BouncyCastle.Crypto, Version=1.7.4114.6375, Culture=neutral, PublicKeyToken=0e99375e54769942"
                 "ScatterAssemblies"
                 {
-                    "_61F8DCAEEDBDC7407470A441628083A7"
+                    "_326586807BC5F7930D12A480AF9E3B81"
                     {
                     "Name" = "8:BouncyCastle.Crypto.dll"
                     "Attributes" = "3:512"
@@ -382,6 +382,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_38D071800351470182DC817C40780FDE"
+            {
+            "SourcePath" = "8:..\\FirstOultookAddin\\bin\\Debug\\FirstOultookAddin.dll.manifest"
+            "TargetName" = "8:FirstOultookAddin.dll.manifest"
+            "Tag" = "8:"
+            "Folder" = "8:_A5DB86D7B8C148E184DA972AC29D6318"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_6AB049F5B310D350D6BFBA4A496F736B"
@@ -528,26 +548,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C92CBFC941CC4B0A8EEE46971DFA090E"
-            {
-            "SourcePath" = "8:..\\FirstOultookAddin\\bin\\Release\\FirstOultookAddin.dll.manifest"
-            "TargetName" = "8:FirstOultookAddin.dll.manifest"
-            "Tag" = "8:"
-            "Folder" = "8:_A5DB86D7B8C148E184DA972AC29D6318"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_CCEE49FF3599C1401BB26BDF83E20BE5"
             {
             "AssemblyRegister" = "3:1"
@@ -610,9 +610,9 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F3D44536B4E94153AAF38C8BB13EF027"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_FD2EDE654B5A4CA5B6D6FFD1FEE71FA4"
             {
-            "SourcePath" = "8:..\\FirstOultookAddin\\bin\\Release\\FirstOultookAddin.vsto"
+            "SourcePath" = "8:..\\FirstOultookAddin\\bin\\Debug\\FirstOultookAddin.vsto"
             "TargetName" = "8:FirstOultookAddin.vsto"
             "Tag" = "8:"
             "Folder" = "8:_A5DB86D7B8C148E184DA972AC29D6318"
@@ -687,7 +687,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Easier Email Encryption.ECube"
         "ProductCode" = "8:{92A6C8BE-BDBA-4E6E-83C1-530C0C8B5454}"
-        "PackageCode" = "8:{1A7C001A-CD95-41F5-8BA9-0E76ECB08076}"
+        "PackageCode" = "8:{08ED10A4-6280-4D3D-BC4F-3394B0ADAA3F}"
         "UpgradeCode" = "8:{FD62BE41-DFCB-4700-B60F-5AD9BC993CDB}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -1237,7 +1237,7 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_C1465F822630452ABBB9BCCBDD69644B"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_03AD6C2AC3C741218E0CB39D744E23F0"
             {
             "SourcePath" = "8:..\\FirstOultookAddin\\obj\\Debug\\FirstOultookAddin.dll"
             "TargetName" = "8:"

@@ -210,6 +210,7 @@ Partial Class EncryptionPasswordDialogBox
         Me.ICTimeTest.TabIndex = 13
         Me.ICTimeTest.Text = "iteration counter time test for 128 bit key"
         Me.ICTimeTest.UseVisualStyleBackColor = True
+        Me.ICTimeTest.Visible = False
         '
         'LogoPictureBox
         '

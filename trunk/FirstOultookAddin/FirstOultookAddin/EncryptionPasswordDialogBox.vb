@@ -581,7 +581,7 @@ Public Class EncryptionPasswordDialogBox
             Timer1.Start()
 
         Catch ex As System.Exception
-            MsgBox(ex.Message, , "Something Went Wrong!")
+            'MsgBox(ex.Message, , "Something Went Wrong : donebutton Click!")
         End Try
 
     End Sub
@@ -665,7 +665,7 @@ Public Class EncryptionPasswordDialogBox
             End If
 
         Catch ex As System.Exception
-            MsgBox(ex.Message, , "Something Went Wrong!")
+            '  MsgBox(ex.Message, , "Something Went Wrong : bgworker!")
         End Try
     End Sub
 
@@ -702,7 +702,7 @@ Public Class EncryptionPasswordDialogBox
             Return isMessageSavedInSentBox
 
         Catch ex As System.Exception
-            MsgBox(ex.Message, , "Something Went Wrong!")
+            'MsgBox(ex.Message, , "Something Went Wrong : Isentmessagesaved function!")
 
         End Try
 
